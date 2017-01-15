@@ -1,0 +1,154 @@
+body {
+  background: #0000FF;
+  font-family: 'Vollkorn', serif;
+  color: #FAFAFA;
+}
+
+h1 {
+  font-family: 'Ravi Prakash', cursive;
+  font-size: 10em;
+  text-shadow: 5px 5px 10px #000000;
+}
+
+h2 {
+  font-size: 1.5em;
+  letter-spacing: 3px;
+  font-weight: normal;
+}
+
+.scoreboard {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border: 20px groove yellow;
+  border-radius: 10px;
+  background-color: #856025;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.8), 0 12px 60px 0 rgba(0, 0, 0, 0.38);
+  width: 600px;
+}
+
+.jumbotron {
+  text-align: center;
+  background: #0000FF;
+  padding: 0;
+}
+
+.footer {
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.col-md-4:nth-child(1) {
+  float: left;
+}
+
+.col-md-4:nth-child(2) {
+  float: right;
+}
+
+span {
+  font-size: 8em;
+  position: absolute;
+  margin-top: -200px;
+  margin-left: -50px;
+  width: 105px;
+}
+input {
+  color: black;
+  width: 100px;
+}
+.player {
+  display: inline-block;
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  padding: 10px 30px;
+}
+
+.player-name {
+  font-size: 24px;
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.player-score {
+  width: 100px;
+  background: #0000FF;
+}
+
+.counter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.start-action,
+.reset-action {
+  display: block;
+  background: #0000FF;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #FAFAFA;
+  font-size: 2em;
+  padding: 20px 20px;
+  max-width: 200px;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 10px #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.start-action:active,
+.reset-action:active {
+  background-color: #C46212;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.start-action:hover,
+.reset-action:hover {
+  background-color: navy;
+}
+.start-action:disabled,
+.reset-action:disabled {
+  background-color: gray;
+}
+
+.counter-action {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px 30px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #F5D714;
+  border: none;
+  border-radius: 100%;
+  box-shadow: 0 10px #999;
+}
+.counter-action:hover {
+  background: #EE9900;
+  cursor: pointer;
+}
+.counter-action:active {
+  background-color: #C46212;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.counter-action:disabled {
+  background: #D3D3D3;
+  cursor: pointer;
+}
+
+.counter-score {
+  color: #FAFAFA;
+  text-align: center;
+  font-family: 'Vollkorn', serif;
+  padding: 20px;
+  font-size: 2em;
+}
