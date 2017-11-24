@@ -4,6 +4,21 @@ body {
   color: #FAFAFA;
 }
 
+.buttons {
+	display: -webkit-flex;
+    display: flex;
+	-webkit-align-items: center;
+	align-items: center;   
+}
+.players {
+	display: -webkit-flex;
+    display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;  
+}
+
 h1 {
   font-family: 'Ravi Prakash', cursive;
   font-size: 10em;
@@ -36,14 +51,6 @@ h2 {
 .footer {
   padding: 5px 10px;
   text-align: center;
-}
-
-.col-md-4:nth-child(1) {
-  float: left;
-}
-
-.col-md-4:nth-child(2) {
-  float: right;
 }
 
 span {
