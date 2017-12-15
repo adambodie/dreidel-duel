@@ -16,7 +16,10 @@ body {
 	-webkit-align-items: center;
 	align-items: center;
 	-webkit-justify-content: space-between;
-	justify-content: space-between;  
+	justify-content: space-between; 
+}
+.player {
+	flex: 1;
 }
 
 h1 {
@@ -29,8 +32,11 @@ h2 {
   font-size: 1.5em;
   letter-spacing: 3px;
   font-weight: normal;
+  text-align: center;
 }
-
+#spin {
+  font-size: 4em;
+}
 .scoreboard {
   margin-left: auto;
   margin-right: auto;
