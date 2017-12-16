@@ -46,6 +46,7 @@ h2 {
   background-color: #856025;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.8), 0 12px 60px 0 rgba(0, 0, 0, 0.38);
   width: 600px;
+  margin-bottom: 50px;
 }
 
 .jumbotron {
