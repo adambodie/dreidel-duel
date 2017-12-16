@@ -8,8 +8,6 @@ export default class Application extends Component {
     this.state = {
 		pot: 10,
 		spin: '',
-		value: '',
-		valueOne: '',
 		isDisabled: true,
 		/*players: [
 			{ name: 'Adam',
@@ -27,13 +25,11 @@ export default class Application extends Component {
 			{ name: 'Adam',
 			  score: 5,
 			  isDisabled: true,
-			  id: 1
 			},
 		playerTwo:
 			{ name: 'Jenn',
 			  score: 5,
 			  isDisabled: true,
-			  id: 1
 			},
     };
     this.onStartChange = this.onStartChange.bind(this);
@@ -64,20 +60,24 @@ export default class Application extends Component {
 			spin: ''
 		}));
 	}
-	
-	
+		
 	onScoreChange() {
 		let dreidel = Math.floor(Math.random() * 4);
 		const hebrew = ["נ", "שׁ", "ה", "ג"];
 		let currentSpin = hebrew[dreidel];
 		let newPlayerOne = Object.assign({}, this.state.playerOne);
 		let newPlayerTwo = Object.assign({}, this.state.playerTwo);
+		
 		if ((this.state.playerOne.score <= 0 || this.state.playerTwo.score <= 0) && (dreidel == 1 || dreidel == 3)) {
-      			this.setState(prevState => ({
+			newPlayerOne.isDisabled = true;
+			newPlayerTwo.isDisabled = true;
+      		this.setState(prevState => ({
+				playerOne: newPlayerOne,
+				playerTwo: newPlayerTwo,
 				spin: "",
 				pot: "Game Over, play again"
 			}));
-    }	else {	
+    }	else {
 		if (dreidel == 0) {
 			/* Spin a Nun - Nothing */
 			if (this.state.playerOne.isDisabled == false) {
@@ -87,10 +87,6 @@ export default class Application extends Component {
 				newPlayerOne.isDisabled = false;
 				newPlayerTwo.isDisabled = true;
 			}
-			this.setState(prevState => ({
-				playerOne: newPlayerOne,
-				playerTwo: newPlayerTwo
-			}));		
 		} else if (dreidel == 1) {
 			/* Spin a Shin - Put one in the Pot */
 			if (this.state.playerOne.isDisabled == false) {
@@ -101,10 +97,8 @@ export default class Application extends Component {
 				newPlayerOne.isDisabled = false;
 				newPlayerTwo.score = this.state.playerTwo.score - 1;
 				newPlayerTwo.isDisabled = true;	
-			}	
+			}
 			this.setState(prevState => ({
-				playerOne: newPlayerOne,
-				playerTwo: newPlayerTwo,
 				pot: this.state.pot + 1,
 			}));
 		} else if (dreidel == 2) {
@@ -119,8 +113,6 @@ export default class Application extends Component {
 				newPlayerTwo.isDisabled = true;
 			}			
 			this.setState(prevState => ({
-				playerOne: newPlayerOne,
-				playerTwo: newPlayerTwo,
 				pot: Math.floor(this.state.pot / 2)
 			}));
 		} else {	
@@ -135,8 +127,6 @@ export default class Application extends Component {
 				newPlayerTwo.isDisabled = true;
 			}
 			this.setState(prevState => ({
-				playerOne: newPlayerOne,
-				playerTwo: newPlayerTwo,
 				pot: 0
 			}));
 		}
@@ -144,12 +134,12 @@ export default class Application extends Component {
 			newPlayerOne.score = this.state.playerOne.score - 1;
 			newPlayerTwo.score = this.state.playerTwo.score - 1;
 			this.setState(prevState => ({
-				playerOne: newPlayerOne,
-				playerTwo: newPlayerTwo,
-				pot: 2
+				pot: this.state.pot + 2
 			}));	
 		}
 		this.setState(prevState => ({
+			playerOne: newPlayerOne,
+			playerTwo: newPlayerTwo,
 			spin: currentSpin
 		}));
 	}
@@ -161,33 +151,33 @@ export default class Application extends Component {
 		<div className="players">
 			<div className="player">
 				<div>
-				<h2>{this.state.playerOne.name}</h2>
+					<h2>{this.state.playerOne.name}</h2>
 					<div className = "counter">
 						<button className= "counter-action" disabled={this.state.playerOne.isDisabled} onClick={this.onScoreChange}>SPIN</button>
 					<div className="counter-score">{this.state.playerOne.score}</div> 
+					</div>
+				</div>
+			</div>
+			<h2 id="spin">{this.state.spin}</h2>
+			<div className="player">
+				<div>
+					<h2>{this.state.playerTwo.name}</h2>
+					<div className="counter">
+						<button className="counter-action" disabled={this.state.playerTwo.isDisabled} onClick={this.onScoreChange}>SPIN</button>
+					<div className= "counter-score">{this.state.playerTwo.score}</div> 
+					</div>
 				</div>
 			</div>
 		</div>
-		<h2 id="spin">{this.state.spin}</h2>
-		<div className="player">
-			<div>
-				<h2>{this.state.playerTwo.name}</h2>
-				<div className="counter">
-					<button className="counter-action" disabled={this.state.playerTwo.isDisabled} onClick={this.onScoreChange}>SPIN</button>
-				<div className= "counter-score">{this.state.playerTwo.score}</div> 
-			</div>
-		</div>
+	<div className="footer">
+		<h3>Coins in the Pot:</h3>
+		<h3>{this.state.pot}</h3>
+	</div>
+	<div className="buttons">
+		<button className="reset-action" onClick={this.onResetChange} disabled={this.state.isDisabled}>Reset</button>
+		<button className="start-action" onClick={this.onStartChange} disabled={!this.state.isDisabled}>Start</button>
 	</div>
 </div>
-		<div className="footer">
-			<h3>Coins in the Pot:</h3>
-			<h3>{this.state.pot}</h3>
-		</div>
-		<div className="buttons">
-			 <button className="reset-action" onClick={this.onResetChange} disabled={this.state.isDisabled}>Reset</button>
-			<button className="start-action" onClick={this.onStartChange} disabled={!this.state.isDisabled}>Start</button>
-		</div>
-	</div>
 	)
   }
 }
