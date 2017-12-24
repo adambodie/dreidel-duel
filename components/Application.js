@@ -48,8 +48,7 @@ export default class Application extends Component {
 		const hebrew = ["נ", "שׁ", "ה", "ג"];
 		let currentSpin = hebrew[dreidel];
 		const newPlayers = [...this.state.players];
-		
-		if ((this.state.newPlayers[0].score == 0 || this.state.newPlayers[1].score == 0) && (dreidel == 1 || dreidel == 3)) {
+		if ((this.state.newPlayers[0].score <= 0 || this.state.newPlayers[1].score <= 0) && (dreidel == 1 || dreidel == 3)) {
 			newPlayers[0].isDisabled = true; newPlayers[1].isDisabled = true;
       		this.setState(prevState => ({
 				newPlayers,
@@ -58,11 +57,9 @@ export default class Application extends Component {
 			}));
 		} else {
 		if (this.state.pot == 0 || (this.state.newPlayers[0].isDisabled == false && this.state.turn > 1)) {
-			newPlayers[0].score = this.state.newPlayers[0].score - 1;
-			newPlayers[1].score = this.state.newPlayers[1].score - 1;
-			this.setState(prevState => ({
-				pot: this.state.pot + 2
-			}));	
+			newPlayers[0].score -= 1;
+			newPlayers[1].score -= 1;
+			this.setState(prevState => ({ pot: this.state.pot + 2 }));	
 		}			
 		if (dreidel == 0) {
 			/* Spin a Nun - Nothing */
@@ -77,16 +74,14 @@ export default class Application extends Component {
 			/* Spin a Shin - Put one in the Pot */
 			if (this.state.newPlayers[0].isDisabled == false) {
 				newPlayers[0].isDisabled = true;
-				newPlayers[0].score = this.state.newPlayers[0].score - 1;
+				newPlayers[0].score -= 1;
 				newPlayers[1].isDisabled = false;
 			} else {
 				newPlayers[0].isDisabled = false;
-				newPlayers[1].score = this.state.newPlayers[1].score - 1;
+				newPlayers[1].score -= 1;
 				newPlayers[1].isDisabled = true;
 			}
-			this.setState(prevState => ({
-				pot: this.state.pot + 1,
-			}));
+			this.setState(prevState => ({ pot: this.state.pot + 1 }));
 		} else if (dreidel == 2) {
 			/* Spin a Hay - Win half of your coins in the Pot */
 			if (this.state.newPlayers[0].isDisabled == false) {
@@ -98,25 +93,21 @@ export default class Application extends Component {
 				newPlayers[1].score = this.state.newPlayers[1].score + Math.round(this.state.pot / 2);
 				newPlayers[1].isDisabled = true;
 			}			
-			this.setState(prevState => ({
-				pot: Math.floor(this.state.pot / 2)
-			}));
+			this.setState(prevState => ({ pot: Math.floor(this.state.pot / 2) }));
 		} else {	
 		/* Spin a Gimel - Win everything  */
 			if (this.state.newPlayers[0].isDisabled == false) {
 				newPlayers[0].isDisabled = true;
 				newPlayers[0].score = this.state.newPlayers[0].score + this.state.pot;
-				newPlayers[1].score = this.state.newPlayers[1].score - 1;
+				newPlayers[1].score -= 1;
 				newPlayers[1].isDisabled = false;
 			} else {
 				newPlayers[0].isDisabled = false;
-				newPlayers[0].score = this.state.newPlayers[0].score - 1;
+				newPlayers[0].score -= 1;
 				newPlayers[1].score = this.state.newPlayers[1].score + this.state.pot;
 				newPlayers[1].isDisabled = true;
 			}
-			this.setState(prevState => ({
-				pot: 2
-			}));
+			this.setState(prevState => ({ pot: 2 }));
 		}
 		
 		this.setState(prevState => ({
