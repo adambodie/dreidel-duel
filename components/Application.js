@@ -59,7 +59,7 @@ export default class Application extends Component {
 		if (this.state.pot == 0 || (this.state.newPlayers[0].isDisabled == false && this.state.turn > 1)) {
 			newPlayers[0].score -= 1;
 			newPlayers[1].score -= 1;
-			this.setState(prevState => ({ pot: this.state.pot + 2 }));	
+			this.setState(prevState => ({ pot: this.state.pot + 2 }));
 		}			
 		if (dreidel == 0) {
 			/* Spin a Nun - Nothing */
