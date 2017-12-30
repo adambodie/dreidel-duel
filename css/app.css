@@ -168,3 +168,32 @@ input {
   padding: 20px;
   font-size: 2em;
 }
+
+.add-action {
+  display: block;
+  background: #0000FF;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #FAFAFA;
+  font-size: 2em;
+  padding: 5px 5px;
+  min-width: 400px;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 10px #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.add-action:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.add-action:disabled {
+  background: #D3D3D3;
+  cursor: pointer;
+}
