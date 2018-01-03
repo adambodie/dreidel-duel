@@ -54,329 +54,350 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	__webpack_require__(178);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//Libraries
-	var PLAYERS = [{ name: "Adam", score: 5, isDisabled: true, id: 1 }, { name: "Jenn", score: 5, isDisabled: true, id: 2 }];
+	var PLAYERS = [{
+	  name: "Adam",
+	  score: 5,
+	  isDisabled: true,
+	  id: 1
+	}, {
+	  name: "Jenn",
+	  score: 5,
+	  isDisabled: true,
+	  id: 2
+	}]; //Libraries
 
-	var nextId = 3;
+	var INITIAL_POT = 10;
 
 	var StartGame = _react2.default.createClass({
-	    displayName: 'StartGame',
+	  displayName: 'StartGame',
 
-	    propTypes: {
-	        onAdd: _react2.default.PropTypes.func.isRequired
-	    },
-	    getInitialState: function getInitialState() {
-	        return {
-	            isDisabled: true
-	        };
-	    },
-	    onDisableChange: function onDisableChange(e) {
-	        this.props.onAdd(this.state.isDisabled);
-	        this.setState({ isDisabled: false });
-	        this.props.onAdd(this.state.isStartDisabled);
-	        this.setState({ isStartDisabled: false });
-	    },
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'start-game-button' },
-	            _react2.default.createElement(
-	                'button',
-	                { className: 'start-action', onClick: this.onDisableChange },
-	                ' Start '
-	            )
-	        );
-	    }
+	  propTypes: {
+	    onAdd: _react2.default.PropTypes.func.isRequired
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      isDisabled: false
+	    };
+	  },
+	  onDisableChange: function onDisableChange(e) {
+	    this.props.onAdd(this.state.isDisabled);
+	    this.setState({
+	      isDisabled: false
+	    });
+	    this.props.onAdd(this.state.isStartDisabled);
+	    this.setState({
+	      isStartDisabled: false
+	    });
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'col-xs-6' },
+	      _react2.default.createElement(
+	        'button',
+	        { className: 'start-action', onClick: this.onDisableChange },
+	        ' Start '
+	      )
+	    );
+	  }
 	});
 
 	var ResetGame = _react2.default.createClass({
-	    displayName: 'ResetGame',
+	  displayName: 'ResetGame',
 
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'reset-game-button' },
-	            _react2.default.createElement(
-	                'button',
-	                { className: 'reset-action' },
-	                ' Reset '
-	            )
-	        );
-	    }
+	  propTypes: {
+	    onAdd: _react2.default.PropTypes.func.isRequired
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      isDisabled: true
+	    };
+	  },
+	  onDisableChange: function onDisableChange(e) {
+	    this.props.onAdd(this.state.isDisabled);
+	    this.setState({
+	      isDisabled: true
+	    });
+	    this.props.onAdd(this.state.isStartDisabled);
+	    this.setState({
+	      isStartDisabled: true
+	    });
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'col-xs-6' },
+	      _react2.default.createElement(
+	        'button',
+	        { className: 'reset-action', onClick: this.onDisableChange, disabled: this.isDisabled },
+	        ' Reset '
+	      ),
+	      ' '
+	    );
+	  }
 	});
 
-	function Header(props) {
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'header jumbotron row' },
-	        _react2.default.createElement(
-	            'h1',
-	            null,
-	            props.title
-	        ),
-	        _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Coins in the Pot: ',
-	            props.pot
-	        )
-	    );
-	}
-
-	Header.propTypes = {
-	    title: _react2.default.PropTypes.string.isRequired,
-	    players: _react2.default.PropTypes.array.isRequired
-	};
-
 	function Counter(props) {
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'counter' },
-	        _react2.default.createElement(
-	            'button',
-	            { className: 'counter-action', onClick: function onClick() {
-	                    props.onChange();
-	                }, disabled: props.isDisabled },
-	            ' Spin '
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'counter-score' },
-	            ' ',
-	            props.score,
-	            ' '
-	        )
-	    );
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'counter' },
+	    _react2.default.createElement(
+	      'button',
+	      { className: 'counter-action', onClick: function onClick() {
+	          props.onChange();
+	        }, disabled: props.isDisabled },
+	      ' SPIN '
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'counter-score' },
+	      ' ',
+	      props.score,
+	      ' '
+	    ),
+	    ' '
+	  );
 	}
 
 	Counter.propTypes = {
-	    score: _react2.default.PropTypes.number.isRequired,
-	    isDisabled: _react2.default.PropTypes.bool.isRequired,
-	    onChange: _react2.default.PropTypes.func.isRequired
+	  score: _react2.default.PropTypes.number.isRequired,
+	  isDisabled: _react2.default.PropTypes.bool.isRequired,
+	  onChange: _react2.default.PropTypes.func.isRequired
 	};
 
 	function Player(props) {
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'player col-md-3' },
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'player-name' },
-	            props.name
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'playerScore' },
-	            _react2.default.createElement(Counter, { score: props.score, onChange: props.onScoreChange, isDisabled: props.isDisabled })
-	        )
-	    );
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'player col-md-4' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'player-name' },
+	      ' ',
+	      props.name,
+	      ' '
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'playerScore' },
+	      ' ',
+	      _react2.default.createElement(Counter, { score: props.score,
+	        onChange: props.onScoreChange,
+	        isDisabled: props.isDisabled })
+	    )
+	  );
 	}
 	Player.propTypes = {
-	    name: _react2.default.PropTypes.string.isRequired,
-	    score: _react2.default.PropTypes.number.isRequired,
-	    isDisabled: _react2.default.PropTypes.bool.isRequired,
-	    onScoreChange: _react2.default.PropTypes.func.isRequired,
-	    onRemove: _react2.default.PropTypes.func.isRequired
+	  name: _react2.default.PropTypes.string.isRequired,
+	  score: _react2.default.PropTypes.number.isRequired,
+	  isDisabled: _react2.default.PropTypes.bool.isRequired,
+	  onScoreChange: _react2.default.PropTypes.func.isRequired
 
 	};
 
 	function Footer(props) {
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'footer' },
-	        _react2.default.createElement(
-	            'h1',
-	            null,
-	            props.spin
-	        )
-	    );
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'footer' },
+	    _react2.default.createElement(
+	      'h3',
+	      null,
+	      ' Coins in the Pot: ',
+	      props.pot,
+	      ' '
+	    ),
+	    _react2.default.createElement(
+	      'h2',
+	      null,
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        ' ',
+	        props.spin,
+	        ' '
+	      )
+	    )
+	  );
 	}
 
 	Footer.propTypes = {
-	    spin: _react2.default.PropTypes.string.isRequired
+	  spin: _react2.default.PropTypes.string.isRequired
 	};
 
 	var Application = _react2.default.createClass({
-	    displayName: 'Application',
+	  displayName: 'Application',
 
-	    propTypes: {
-	        title: _react2.default.PropTypes.string,
-	        spin: _react2.default.PropTypes.string,
-	        pot: _react2.default.PropTypes.number,
-	        initialPlayers: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.shape({
-	            name: _react2.default.PropTypes.string.isRequired,
-	            score: _react2.default.PropTypes.number.isRequired,
-	            isDisabled: _react2.default.PropTypes.bool.isRequired,
-	            id: _react2.default.PropTypes.number.isRequired
-	        })).isRequired
-	    },
+	  propTypes: {
+	    title: _react2.default.PropTypes.string,
+	    spin: _react2.default.PropTypes.string,
+	    pot: _react2.default.PropTypes.number,
+	    initialPlayers: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.shape({
+	      name: _react2.default.PropTypes.string.isRequired,
+	      score: _react2.default.PropTypes.number.isRequired,
+	      isDisabled: _react2.default.PropTypes.bool.isRequired,
+	      id: _react2.default.PropTypes.number.isRequired
+	    })).isRequired
+	  },
 
-	    getInitialState: function getInitialState() {
-	        return {
-	            players: this.props.initialPlayers,
-	            pot: PLAYERS.length,
-	            spin: ""
+	  getInitialState: function getInitialState() {
+	    return {
+	      players: this.props.initialPlayers,
+	      pot: INITIAL_POT,
+	      spin: ""
 
-	        };
-	    },
-	    getDefaultProps: function getDefaultProps() {
-	        return {
-	            title: "Dreidel Duel!"
-	        };
-	    },
-	    onScoreChange: function onScoreChange(index) {
-	        var dreidel = Math.floor(Math.random() * 4);
-	        console.log(dreidel);
-	        {/* Remove player if player has zero coins and spins Shin and Hay */}
-	        if (this.state.players[index].score <= 0 && (dreidel == 1 || dreidel == 2)) {
-	            if (index >= this.state.players.length - 1) {
-	                this.state.players[0].isDisabled = false;
-	            } else {
-	                this.state.players[index + 1].isDisabled = false;
-	            }
-	            this.state.spin = this.state.players[index].name + " has been eliminated.";
-	            this.state.players.splice(index, 1);
-	            this.setState(this.state);
-	        } else {
+	    };
+	  },
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      title: "Dreidel Duel!"
+	    };
+	  },
+	  onScoreChange: function onScoreChange(index) {
+	    var dreidel = Math.floor(Math.random() * 4);
+	    var hebrew = ["ג", "ה", "נ", "שׁ"];{/* Remove player if player has zero coins and spins Shin and Hay */}
+	    if (this.state.players[index].score <= 0 && (dreidel == 1 || dreidel == 2)) {
 
-	            {/* Spin a Nun - Nothing */}
-	            if (dreidel == 0) {
-	                this.state.spin = this.state.players[index].name + " got a Nun!";
-	                this.state.players[index].score += 0;
+	      this.state.players[index].isDisabled = true;
+	      this.state.spin = "";
+	      this.state.pot = "Game Over, play again";
+	      this.setState(this.state);
+	    } else {
+	      this.state.spin = hebrew[dreidel];
 
-	                {/* Spin a Shin - Put one in the Pot */}
-	            } else if (dreidel == 1) {
-	                this.state.spin = this.state.players[index].name + " got a Shin!";
-	                this.state.players[index].score -= 1;
-	                this.state.pot += 1;
+	      {/* Spin a Nun - Nothing */}
+	      if (dreidel == 0) {
+	        this.state.players[index].score += 0;
 
-	                {/* Spin a Hay - Put half of your coins in the Pot */}
-	            } else if (dreidel == 2) {
-	                this.state.spin = this.state.players[index].name + " got a Hay!";
-	                this.state.players[index].score += Math.round(this.state.pot / 2);
-	                this.state.pot = Math.floor(this.state.pot / 2);
+	        {/* Spin a Shin - Put one in the Pot */}
+	      } else if (dreidel == 1) {
+	        this.state.players[index].score -= 1;
+	        this.state.pot += 1;
 
-	                {/* Spin a Gimel - Win everything  */}
-	            } else {
-	                this.state.spin = this.state.players[index].name + " got a Gimel!";
-	                this.state.players[index].score += this.state.pot;
-	                this.state.pot = 0;
+	        {/* Spin a Hay - Put half of your coins in the Pot */}
+	      } else if (dreidel == 2) {
+	        this.state.players[index].score += Math.round(this.state.pot / 2);
+	        this.state.pot = Math.floor(this.state.pot / 2);
 
-	                {/* Each player puts one coin in the pot */}
-	                var startIndex = index;
-	                for (index; index < this.state.players.length; index++) {
-	                    if (this.state.players[index].score > 0) {
-	                        this.state.players[index].score -= 1;
-	                        this.state.pot += 1;
-	                    } else {
-	                        this.state.spin = this.state.players[index].name + " has been eliminated.";
-	                        this.state.players.splice(index, 1);
-	                    }
-	                }
-	                for (index = 0; index < startIndex; index++) {
-	                    if (this.state.players[index].score > 0) {
-	                        this.state.players[index].score -= 1;
-	                        this.state.pot += 1;
-	                    } else {
-	                        this.state.spin = this.state.players[index].name + " has been eliminated.";
-	                        this.state.players.splice(index, 1);
-	                    }
-	                }
-	            }
-	            {/* Loop from last player in array to first */}
-	            if (index >= this.state.players.length - 1) {
-	                this.state.players[index].isDisabled = true;
-	                this.state.players[0].isDisabled = false;
-	                {/* Each player add a coin to the pot, remove player if no coins to put in the pot */}
-	                for (index = 0; index < this.state.players.length - 1; index++) {
-	                    if (this.state.players[index].score > 0) {
-	                        this.state.players[index].score -= 1;
-	                        this.state.pot += 1;
-	                    } else {
-	                        this.state.spin = this.state.players[index].name + " has been eliminated.";
-	                        this.state.players.splice(index, 1);
-	                    }
-	                }
+	        {/* Spin a Gimel - Win everything  */}
+	      } else {
+	        this.state.players[index].score += this.state.pot;
+	        this.state.pot = 0;
 
-	                this.setState(this.state);
-	            } else {
-	                this.state.players[index].isDisabled = true;
-	                this.state.players[index + 1].isDisabled = false;
-	                this.setState(this.state);
-	            }
-	        }
-	        if (this.state.players.length == 1) {
-	            this.state.spin = "Game Over, play again.";
-	            this.state.players[0].isDisabled = true;
-	            this.setState(this.state);
-	        }
-	    },
-
-	    onDisabledAdd: function onDisabledAdd() {
-	        this.state.players[0].isDisabled = false;
-	        this.setState(this.state);
-	        this.state.spin = "Let the game begin: " + this.state.players[0].name + "'s turn";
-	    },
-
-	    onPlayerAdd: function onPlayerAdd(name) {
-	        if (this.state.players.length < 4) {
-	            this.state.players.push({
-	                name: name,
-	                score: 10,
-	                isDisabled: true,
-	                id: nextId
-	            });
-	            this.setState(this.state);
+	        {/* Each player puts one coin in the pot */}
+	        var startIndex = index;
+	        for (index; index < this.state.players.length; index++) {
+	          if (this.state.players[index].score > 0) {
+	            this.state.players[index].score -= 1;
 	            this.state.pot += 1;
-	            nextId += 1;
-	        } else {
-	            this.setState(this.state);
-	            this.state.spin = "Maximum number of players allowed is four.";
+	          } else {
+	            this.state.players[index].isDisabled = true;
+	          }
 	        }
-	    },
-
-	    onRemovePlayer: function onRemovePlayer(index) {
-	        if (this.state.players.length > 1) {
-	            this.state.players.splice(index, 1);
-	            this.setState(this.state);
-	            this.state.pot -= 1;
-	        } else {
-	            this.setState(this.state);
-	            this.state.spin = "No others players to remove.";
-	        };
-	    },
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'scoreboard row' },
-	            _react2.default.createElement(Header, { title: this.props.title, players: this.state.players, pot: this.state.pot }),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'players row' },
-	                this.state.players.map(function (player, index) {
-	                    return _react2.default.createElement(Player, {
-	                        onScoreChange: function (delta) {
-	                            this.onScoreChange(index, delta);
-	                        }.bind(this),
-	                        onRemove: function () {
-	                            this.onRemovePlayer(index);
-	                        }.bind(this),
-	                        name: player.name,
-	                        score: player.score,
-	                        isDisabled: player.isDisabled,
-	                        key: player.id });
-	                }.bind(this))
-	            ),
-	            _react2.default.createElement(Footer, { spin: this.state.spin }),
-	            _react2.default.createElement(ResetGame, null),
-	            _react2.default.createElement(StartGame, { onAdd: this.onDisabledAdd })
-	        );
+	        for (index = 0; index < startIndex; index++) {
+	          if (this.state.players[index].score > 0) {
+	            this.state.players[index].score -= 1;
+	            this.state.pot += 1;
+	          } else {
+	            this.state.players[index].isDisabled = true;
+	          }
+	        }
+	      }{/* Loop from last player in array to first */}
+	      if (index >= 1) {
+	        this.state.players[index].isDisabled = true;
+	        this.state.players[0].isDisabled = false;{/* Each player add a coin to the pot, remove player if no coins to put in the pot */}
+	        for (index = 0; index < 1; index++) {
+	          if (this.state.players[index].score > 0) {
+	            this.state.players[index].score -= 1;
+	            this.state.pot += 1;
+	          } else {
+	            this.state.players[index].isDisabled = true;
+	          }
+	        }
+	        this.setState(this.state);
+	      } else {
+	        this.state.players[index].isDisabled = true;
+	        this.state.players[index + 1].isDisabled = false;
+	        this.setState(this.state);
+	      }
 	    }
+	  },
+
+	  onDisabledAdd: function onDisabledAdd() {
+	    this.state.players[0].isDisabled = false;
+	    this.setState(this.state);
+	  },
+	  onResetAdd: function onResetAdd() {
+	    this.state.players[0].isDisabled = true;
+	    this.state.players[1].isDisabled = true;
+	    this.state.players[0].score = 5;
+	    this.state.players[1].score = 5;
+	    this.state.spin = "";
+	    this.state.pot = INITIAL_POT;
+	    this.setState(this.state);
+	  },
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'scoreboard container' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'players row' },
+	        ' ',
+	        this.state.players.map(function (player, index) {
+	          return _react2.default.createElement(Player, { onScoreChange: function (delta) {
+	              this.onScoreChange(index, delta);
+	            }.bind(this),
+	            name: player.name,
+	            score: player.score,
+	            isDisabled: player.isDisabled,
+	            key: player.id
+	          });
+	        }.bind(this)),
+	        ' '
+	      ),
+	      _react2.default.createElement(Footer, { spin: this.state.spin, pot: this.state.pot }),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement(ResetGame, { onAdd: this.onResetAdd }),
+	        _react2.default.createElement(StartGame, { onAdd: this.onDisabledAdd }),
+	        ' '
+	      ),
+	      ' '
+	    );
+	  }
 	});
 
 	_reactDom2.default.render(_react2.default.createElement(Application, { initialPlayers: PLAYERS }), document.getElementById('container'));
+	;
+
+	var _temp = function () {
+	  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+	    return;
+	  }
+
+	  __REACT_HOT_LOADER__.register(PLAYERS, 'PLAYERS', 'C:/Users/Adam Bodie/Documents/GitHub/Dreidel-Duel/app.js');
+
+	  __REACT_HOT_LOADER__.register(INITIAL_POT, 'INITIAL_POT', 'C:/Users/Adam Bodie/Documents/GitHub/Dreidel-Duel/app.js');
+
+	  __REACT_HOT_LOADER__.register(StartGame, 'StartGame', 'C:/Users/Adam Bodie/Documents/GitHub/Dreidel-Duel/app.js');
+
+	  __REACT_HOT_LOADER__.register(ResetGame, 'ResetGame', 'C:/Users/Adam Bodie/Documents/GitHub/Dreidel-Duel/app.js');
+
+	  __REACT_HOT_LOADER__.register(Counter, 'Counter', 'C:/Users/Adam Bodie/Documents/GitHub/Dreidel-Duel/app.js');
+
+	  __REACT_HOT_LOADER__.register(Player, 'Player', 'C:/Users/Adam Bodie/Documents/GitHub/Dreidel-Duel/app.js');
+
+	  __REACT_HOT_LOADER__.register(Footer, 'Footer', 'C:/Users/Adam Bodie/Documents/GitHub/Dreidel-Duel/app.js');
+
+	  __REACT_HOT_LOADER__.register(Application, 'Application', 'C:/Users/Adam Bodie/Documents/GitHub/Dreidel-Duel/app.js');
+	}();
+
+	;
 
 /***/ },
 /* 1 */
@@ -21784,6 +21805,354 @@
 
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(179);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(181)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./app.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./app.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(180)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "body {\r\n  background: #0000FF;\r\n  font-family: 'Vollkorn', serif;\r\n  color: #FAFAFA;\r\n}\r\n\r\nh1 {\r\n  font-family: 'Ravi Prakash', cursive;\r\n  font-size: 10em;\r\n  text-shadow: 5px 5px 10px #000000;\r\n}\r\n\r\nh2 {\r\n  font-size: 1.5em;\r\n  letter-spacing: 3px;\r\n  font-weight: normal;\r\n}\r\n\r\n.scoreboard {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  display: block;\r\n  border: 20px groove yellow;\r\n  border-radius: 10px;\r\n  background-color: #856025;\r\n  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.8), 0 12px 60px 0 rgba(0, 0, 0, 0.38);\r\n  width: 600px;\r\n}\r\n\r\n.jumbotron {\r\n  text-align: center;\r\n  background: #0000FF;\r\n  padding: 0;\r\n}\r\n\r\n.footer {\r\n  padding: 5px 10px;\r\n  text-align: center;\r\n}\r\n\r\n.col-md-4:nth-child(1) {\r\n  float: left;\r\n}\r\n\r\n.col-md-4:nth-child(2) {\r\n  float: right;\r\n}\r\n\r\nspan {\r\n  font-size: 8em;\r\n  position: absolute;\r\n  margin-top: -200px;\r\n  margin-left: -50px;\r\n  width: 105px;\r\n}\r\ninput {\r\n  color: black;\r\n  width: 100px;\r\n}\r\n.player {\r\n  display: inline-block;\r\n  font-size: 1.2em;\r\n  letter-spacing: 2px;\r\n  padding: 10px 30px;\r\n}\r\n\r\n.player-name {\r\n  font-size: 24px;\r\n  text-align: center;\r\n  padding: 10px 10px 10px 10px;\r\n}\r\n\r\n.player-score {\r\n  width: 100px;\r\n  background: #0000FF;\r\n}\r\n\r\n.counter {\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n}\r\n\r\n.start-action,\r\n.reset-action {\r\n  display: block;\r\n  background: #0000FF;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  margin-bottom: 20px;\r\n  font-weight: bold;\r\n  color: #FAFAFA;\r\n  font-size: 2em;\r\n  padding: 20px 20px;\r\n  max-width: 200px;\r\n  cursor: pointer;\r\n  border-radius: 15px;\r\n  box-shadow: 0 10px #999;\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  user-select: none;\r\n}\r\n.start-action:active,\r\n.reset-action:active {\r\n  background-color: #C46212;\r\n  box-shadow: 0 5px #666;\r\n  transform: translateY(4px);\r\n}\r\n.start-action:hover,\r\n.reset-action:hover {\r\n  background-color: navy;\r\n}\r\n.start-action:disabled,\r\n.reset-action:disabled {\r\n  background-color: gray;\r\n}\r\n\r\n.counter-action {\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  padding: 25px 30px;\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  color: #fff;\r\n  background-color: #F5D714;\r\n  border: none;\r\n  border-radius: 100%;\r\n  box-shadow: 0 10px #999;\r\n}\r\n.counter-action:hover {\r\n  background: #EE9900;\r\n  cursor: pointer;\r\n}\r\n.counter-action:active {\r\n  background-color: #C46212;\r\n  box-shadow: 0 5px #666;\r\n  transform: translateY(4px);\r\n}\r\n.counter-action:disabled {\r\n  background: #D3D3D3;\r\n  cursor: pointer;\r\n}\r\n\r\n.counter-score {\r\n  color: #FAFAFA;\r\n  text-align: center;\r\n  font-family: 'Vollkorn', serif;\r\n  padding: 20px;\r\n  font-size: 2em;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 180 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
 
 /***/ }
 /******/ ]);
