@@ -47,8 +47,8 @@ button:disabled {
 	cursor: pointer;
 }
 
-.start-action,
-.reset-action {
+.startAction,
+.resetAction {
 	background: #0000FF;
 	margin-bottom: 20px;
 	font-weight: bold;
@@ -59,7 +59,7 @@ button:disabled {
 	border-radius: 15px;
 }
 
-.counter-action {
+.counterAction {
 	padding: 25px 30px;
 	font-size: 24px;
 	text-align: center;
@@ -70,7 +70,7 @@ button:disabled {
 	border-radius: 100%;
 }
 
-.add-action {
+.addAction {
 	background: #0000FF;
 	margin-bottom: 20px;
 	font-weight: bold;
@@ -81,18 +81,18 @@ button:disabled {
 	border-radius: 15px;
 }
 
-.start-action:active,
-.reset-action:active,
-.counter-action:active {
+.startAction:active,
+.resetAction:active,
+.counterAction:active {
 	background-color: #C46212;
 }
 
-.start-action:hover,
-.reset-action:hover {
+.startAction:hover,
+.resetAction:hover {
 	background-color: navy;
 }
 
-.counter-action:hover {
+.counterAction:hover {
 	background: #EE9900;
 	cursor: pointer;
 }
@@ -115,13 +115,13 @@ button:disabled {
 	flex: 1;
 }
 
-.player-name {
+.playerName {
 	font-size: 24px;
 	text-align: center;
 	padding: 10px 10px 10px 10px;
 }
 
-.player-score {
+.playerScore {
 	width: 100px;
 	background: #0000FF;
 }
@@ -134,7 +134,7 @@ button:disabled {
 	margin-right: auto;
 }
 
-.counter-score {
+.counterScore {
 	color: #FAFAFA;
 	text-align: center;
 	font-family: 'Vollkorn', serif;
