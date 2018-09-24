@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Ravi+Prakash');
+
+.jumbotron {
+	padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background:url(../dreidel.jpg);
+    background-size: cover;
+    background-position: bottom;
+}
+.display4 {
+	font-family: 'Ravi Prakash', cursive;
+	text-shadow: 5px 5px 10px #000;
+	text-align: center;
+    font-size: 6rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+@media (min-width: 576px) {
+	.jumbotron {
+		padding: 3rem 1.5rem;
+	}
+}

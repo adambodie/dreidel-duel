@@ -1,6 +1,8 @@
 // Libs
 import React, { Component } from "react";
 import styles from "./index.module.css";
+import Header from '../components/header.js';
+import {Helmet} from "react-helmet";
 
 export default class Application extends Component {
   constructor(props) {
@@ -145,6 +147,12 @@ export default class Application extends Component {
 
   render() {
     return (
+    <div>
+		<Helmet>
+			<meta charSet="utf-8" />
+            <title>Dreidel Duel</title>
+        </Helmet>
+		<Header />
       <div className={styles.scoreboard}>
        <div className={styles.container}>
         <div className={styles.players}>
@@ -212,6 +220,7 @@ export default class Application extends Component {
           </button>
         </div>
         </div>
+      </div>
       </div>
     );
   }
