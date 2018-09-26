@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import styles from "./main.module.css";
 import Pot from './pot.js';
 import Spin from './spin.js';
+import Reset from './reset.js';
+import Start from './start.js';
 
 export default class Main extends Component {
   constructor(props) {
@@ -31,9 +33,6 @@ export default class Main extends Component {
       isDisabled: !prevState.isDisabled
     }));
   }
-  handleResetChange(event) {
-	this.props.onResetChange(event.target.value);
-	}
   onResetChange(index) {
     const newPlayers = [...this.state.players];
     newPlayers[0].isDisabled = true;
@@ -188,6 +187,7 @@ export default class Main extends Component {
           </div>
         </div>
         <div className={styles.footer}>
+			{/*TODO --- Create Add component*/}
           <button
             className={styles.addAction}
             onClick={this.onAdd}
@@ -198,22 +198,8 @@ export default class Main extends Component {
 		<Pot pot={this.state.pot} />
         </div>
         <div className={styles.buttons}>
-			{/* TODO --- Create Reset Button  */}
-          <button
-            className={styles.resetAction}
-            onClick={this.onResetChange}
-            disabled={this.state.isDisabled}
-          >
-            Reset
-          </button>
-          {/* TODO --- Create Start Button */}
-          <button
-            className={styles.startAction}
-            onClick={this.onStartChange}
-            disabled={!this.state.isDisabled}
-          >
-            Start
-          </button>
+			<Reset onResetChange={this.onResetChange} disabled={this.state.isDisabled}/>
+			<Start onStartChange={this.onStartChange} disabled={!this.state.isDisabled}/>
         </div>
         </div>
     );
