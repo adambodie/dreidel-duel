@@ -16,9 +16,7 @@ h2 {
 /* BUTTON STYLES
 ----------------------*/
 .buttons {
-	display: -webkit-flex;
 	display: flex;
-	-webkit-align-items: center;
 	align-items: center;   
 }
 button {
@@ -27,10 +25,6 @@ button {
 	margin-right: auto;
 	cursor: pointer;
 	box-shadow: 0 10px #999;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 }
 
 button:active {
@@ -73,7 +67,6 @@ button:disabled {
 	color: #FAFAFA;
 	font-size: 2em;
 	padding: 5px 5px;
-	min-width: 400px;
 	border-radius: 15px;
 }
 
@@ -96,18 +89,14 @@ button:disabled {
 /* PLAYERS CSS
  -----------------------*/
 .players {
-	display: -webkit-flex;
 	display: flex;
-	-webkit-align-items: center;
 	align-items: center;
-	-webkit-justify-content: space-between;
 	justify-content: space-between; 
 }
 .player {
 	display: inline-block;
 	font-size: 1.2em;
 	letter-spacing: 2px;
-	padding: 10px 30px;
 	flex: 1;
 }
 
@@ -140,9 +129,7 @@ button:disabled {
 
 /* MISCELLANEOUS CSS
  ---------------------*/
-#spin {
-	font-size: 4em;
-}
+
 .scoreboard {
 	margin-left: auto;
 	margin-right: auto;
@@ -151,7 +138,6 @@ button:disabled {
 	border-radius: 10px;
 	background-color: #856025;
 	box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.8), 0 12px 60px 0 rgba(0, 0, 0, 0.38);
-	width: 600px;
 	margin-bottom: 50px;
 }
 
@@ -174,4 +160,10 @@ span {
 	margin-top: -200px;
 	margin-left: -50px;
 	width: 105px;
+}
+
+@media (min-width: 768px) {
+	.scoreboard {
+		width: 600px;
+	}
 }

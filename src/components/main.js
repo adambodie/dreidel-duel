@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import styles from "./main.module.css";
 import Pot from './pot.js';
+import Spin from './spin.js';
 
 export default class Main extends Component {
   constructor(props) {
@@ -30,7 +31,9 @@ export default class Main extends Component {
       isDisabled: !prevState.isDisabled
     }));
   }
-
+  handleResetChange(event) {
+	this.props.onResetChange(event.target.value);
+	}
   onResetChange(index) {
     const newPlayers = [...this.state.players];
     newPlayers[0].isDisabled = true;
@@ -165,7 +168,7 @@ export default class Main extends Component {
               </div>
             </div>
           </div>
-          <h2 id="spin">{this.state.spin}</h2>
+			<Spin spin={this.state.spin} />
           <div className={styles.player}>
             <div>
               <h2>{this.state.players[1].name}</h2>
@@ -195,7 +198,7 @@ export default class Main extends Component {
 		<Pot pot={this.state.pot} />
         </div>
         <div className={styles.buttons}>
-			
+			{/* TODO --- Create Reset Button  */}
           <button
             className={styles.resetAction}
             onClick={this.onResetChange}
@@ -203,6 +206,7 @@ export default class Main extends Component {
           >
             Reset
           </button>
+          {/* TODO --- Create Start Button */}
           <button
             className={styles.startAction}
             onClick={this.onStartChange}
