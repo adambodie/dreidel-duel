@@ -5,6 +5,7 @@ import Pot from './pot.js';
 import Spin from './spin.js';
 import Reset from './reset.js';
 import Start from './start.js';
+import Add from './add.js';
 
 export default class Main extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export default class Main extends Component {
     this.onStartChange = this.onStartChange.bind(this);
     this.onResetChange = this.onResetChange.bind(this);
     this.onScoreChange = this.onScoreChange.bind(this);
-    this.onAdd = this.onAdd.bind(this);
+    this.onAddChange = this.onAddChange.bind(this);
   }
   onStartChange(index) {
     const newPlayers = [...this.state.players];
@@ -47,7 +48,7 @@ export default class Main extends Component {
       turn: 0
     }));
   }
-  onAdd(index) {
+  onAddChange(index) {
     const newPlayers = [...this.state.players];
     if (
       this.state.newPlayers[0].score === 0 ||
@@ -187,15 +188,8 @@ export default class Main extends Component {
           </div>
         </div>
         <div className={styles.footer}>
-			{/*TODO --- Create Add component*/}
-          <button
-            className={styles.addAction}
-            onClick={this.onAdd}
-            disabled={this.state.isButtonDisabled}
-          >
-            Add Coin
-          </button>
-		<Pot pot={this.state.pot} />
+			<Add onAddChange={this.onAddChange} disabled={this.state.isButtonDisabled}/>
+			<Pot pot={this.state.pot} />
         </div>
         <div className={styles.buttons}>
 			<Reset onResetChange={this.onResetChange} disabled={this.state.isDisabled}/>
