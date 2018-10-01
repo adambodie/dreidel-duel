@@ -1,6 +1,6 @@
 // Libs
 import React, { Component } from "react";
-import styles from "./main.module.css";
+import styles from "./reset.module.css";
 
 export default class Reset extends Component {
   constructor(props) {

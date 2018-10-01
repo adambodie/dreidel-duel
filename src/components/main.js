@@ -26,6 +26,7 @@ export default class Main extends Component {
     this.onScoreChange = this.onScoreChange.bind(this);
     this.onAddChange = this.onAddChange.bind(this);
   }
+  
   onStartChange(index) {
     const newPlayers = [...this.state.players];
     newPlayers[0].isDisabled = false;
@@ -149,52 +150,54 @@ export default class Main extends Component {
 
   render() {
     return (
-       <div className={styles.container}>
-        <div className={styles.players}>
-          <div className={styles.player}>
-            <div>
-              <h2>{this.state.players[0].name}</h2>
-              <div className={styles.counter}>
-                <button
-                  className={styles.counterAction}
-                  disabled={this.state.players[0].isDisabled}
-                  onClick={this.onScoreChange}
-                >
-                  SPIN
-                </button>
-                <div className={styles.counterScore}>
-                  {this.state.players[0].score}
-                </div>
-              </div>
-            </div>
-          </div>
-			<Spin spin={this.state.spin} />
-          <div className={styles.player}>
-            <div>
-              <h2>{this.state.players[1].name}</h2>
-              <div className={styles.counter}>
-                <button
-                  className={styles.counterAction}
-                  disabled={this.state.players[1].isDisabled}
-                  onClick={this.onScoreChange}
-                >
-                  SPIN
-                </button>
-                <div className={styles.counterScore}>
-                  {this.state.players[1].score}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.footer}>
-			<Add onAddChange={this.onAddChange} disabled={this.state.isButtonDisabled}/>
-			<Pot pot={this.state.pot} />
-        </div>
-        <div className={styles.buttons}>
-			<Reset onResetChange={this.onResetChange} disabled={this.state.isDisabled}/>
-			<Start onStartChange={this.onStartChange} disabled={!this.state.isDisabled}/>
-        </div>
+		<div className={styles.container}>
+			<div className={styles.players}>
+				<div className={styles.player}>
+					<div>
+						<h2>{this.state.players[0].name}</h2>
+						<div className={styles.counter}>
+							<button
+								className={styles.counterAction}
+								disabled={this.state.players[0].isDisabled}
+								onClick={this.onScoreChange}
+							>
+							SPIN
+							</button>
+							<div className={styles.counterScore}>
+								{this.state.players[0].score}
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<Spin spin={this.state.spin} />
+				
+				<div className={styles.player}>
+					<div>
+						<h2>{this.state.players[1].name}</h2>
+						<div className={styles.counter}>
+							<button
+								className={styles.counterAction}
+								disabled={this.state.players[1].isDisabled}
+								onClick={this.onScoreChange}
+							>
+							SPIN
+							</button>
+							<div className={styles.counterScore}>
+								{this.state.players[1].score}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className={styles.footer}>
+				<Add onAddChange={this.onAddChange} disabled={this.state.isButtonDisabled}/>
+				<Pot pot={this.state.pot} />
+			</div>
+			<div className={styles.buttons}>
+				<Reset onResetChange={this.onResetChange} disabled={this.state.isDisabled}/>
+				<Start onStartChange={this.onStartChange} disabled={!this.state.isDisabled}/>
+			</div>
         </div>
     );
   }

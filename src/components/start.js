@@ -1,6 +1,6 @@
 // Libs
 import React, { Component } from "react";
-import styles from "./main.module.css";
+import styles from "./start.module.css";
 
 export default class Reset extends Component {
   constructor(props) {
@@ -8,6 +8,7 @@ export default class Reset extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
 		disabled: false
+		
 	}
   }
 

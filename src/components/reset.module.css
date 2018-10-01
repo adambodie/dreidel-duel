@@ -1,0 +1,18 @@
+.resetAction {
+	background: #0000FF;
+	margin-bottom: 20px;
+	font-weight: bold;
+	color: #FAFAFA;
+	font-size: 2em;
+	padding: 20px 20px;
+	max-width: 200px;
+	border-radius: 15px;
+}
+
+.resetAction:active {
+	background-color: #C46212;
+}
+
+.resetAction:hover {
+	background-color: navy;
+}

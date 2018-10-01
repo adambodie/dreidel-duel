@@ -37,17 +37,6 @@ button:disabled {
 	cursor: pointer;
 }
 
-.startAction,
-.resetAction {
-	background: #0000FF;
-	margin-bottom: 20px;
-	font-weight: bold;
-	color: #FAFAFA;
-	font-size: 2em;
-	padding: 20px 20px;
-	max-width: 200px;
-	border-radius: 15px;
-}
 
 .counterAction {
 	padding: 25px 30px;
@@ -60,26 +49,11 @@ button:disabled {
 	border-radius: 100%;
 }
 
-.addAction {
-	background: #0000FF;
-	margin-bottom: 20px;
-	font-weight: bold;
-	color: #FAFAFA;
-	font-size: 2em;
-	padding: 5px 5px;
-	border-radius: 15px;
-}
 
-.startAction:active,
-.resetAction:active,
 .counterAction:active {
 	background-color: #C46212;
 }
 
-.startAction:hover,
-.resetAction:hover {
-	background-color: navy;
-}
 
 .counterAction:hover {
 	background: #EE9900;
