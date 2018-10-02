@@ -6,6 +6,7 @@ import Spin from './spin.js';
 import Reset from './reset.js';
 import Start from './start.js';
 import Add from './add.js';
+import Player from './player.js';
 
 export default class Main extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class Main extends Component {
       pot: 10,
       spin: "",
       turn: 0,
+      value: '',
       isDisabled: true,
       isButtonDisabled: true,
       players: [
@@ -26,6 +28,7 @@ export default class Main extends Component {
     this.onScoreChange = this.onScoreChange.bind(this);
     this.onAddChange = this.onAddChange.bind(this);
   }
+
   
   onStartChange(index) {
     const newPlayers = [...this.state.players];
@@ -149,46 +152,30 @@ export default class Main extends Component {
   }
 
   render() {
+	  let playerOneName = this.state.players[0].name;
+	  let playerOneScore = this.state.players[0].score;
+	  let playerOneDisabled = this.state.players[0].isDisabled;
+	  let playerTwoName = this.state.players[1].name;
+	  let playerTwoScore = this.state.players[1].score;
+	  let playerTwoDisabled = this.state.players[1].isDisabled;
     return (
 		<div className={styles.container}>
 			<div className={styles.players}>
-				<div className={styles.player}>
-					<div>
-						<h2>{this.state.players[0].name}</h2>
-						<div className={styles.counter}>
-							<button
-								className={styles.counterAction}
-								disabled={this.state.players[0].isDisabled}
-								onClick={this.onScoreChange}
-							>
-							SPIN
-							</button>
-							<div className={styles.counterScore}>
-								{this.state.players[0].score}
-							</div>
-						</div>
-					</div>
-				</div>
-				
+				<Player 
+					name={playerOneName} 
+					score={playerOneScore} 
+					disabled={playerOneDisabled} 
+					onScoreChange={this.onScoreChange} 
+					players={this.state.players}
+					/>
 				<Spin spin={this.state.spin} />
-				
-				<div className={styles.player}>
-					<div>
-						<h2>{this.state.players[1].name}</h2>
-						<div className={styles.counter}>
-							<button
-								className={styles.counterAction}
-								disabled={this.state.players[1].isDisabled}
-								onClick={this.onScoreChange}
-							>
-							SPIN
-							</button>
-							<div className={styles.counterScore}>
-								{this.state.players[1].score}
-							</div>
-						</div>
-					</div>
-				</div>
+				<Player 
+					name={playerTwoName} 
+					score={playerTwoScore} 
+					disabled={playerTwoDisabled} 
+					onScoreChange={this.onScoreChange} 
+					players={this.state.players}
+					/>
 			</div>
 			<div className={styles.footer}>
 				<Add onAddChange={this.onAddChange} disabled={this.state.isButtonDisabled}/>
