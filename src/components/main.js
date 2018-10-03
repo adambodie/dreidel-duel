@@ -19,8 +19,8 @@ export default class Main extends Component {
       isDisabled: true,
       isButtonDisabled: true,
       players: [
-        { name: "Adam", score: 5, isDisabled: true, id: 1 },
-        { name: "Jenn", score: 5, isDisabled: true, id: 2 }
+        { score: 5, isDisabled: true, id: 1 },
+        { score: 5, isDisabled: true, id: 2 }
       ]
     };
     this.onStartChange = this.onStartChange.bind(this);
@@ -152,29 +152,23 @@ export default class Main extends Component {
   }
 
   render() {
-	  let playerOneName = this.state.players[0].name;
-	  let playerOneScore = this.state.players[0].score;
-	  let playerOneDisabled = this.state.players[0].isDisabled;
-	  let playerTwoName = this.state.players[1].name;
-	  let playerTwoScore = this.state.players[1].score;
-	  let playerTwoDisabled = this.state.players[1].isDisabled;
     return (
 		<div className={styles.container}>
 			<div className={styles.players}>
 				<Player 
-					name={playerOneName} 
-					score={playerOneScore} 
-					disabled={playerOneDisabled} 
+					score={this.state.players[0].score} 
+					disabled={this.state.players[0].isDisabled} 
 					onScoreChange={this.onScoreChange} 
 					players={this.state.players}
+					id={this.state.players[0].id}
 					/>
 				<Spin spin={this.state.spin} />
-				<Player 
-					name={playerTwoName} 
-					score={playerTwoScore} 
-					disabled={playerTwoDisabled} 
+				<Player  
+					score={this.state.players[1].score} 
+					disabled={this.state.players[1].isDisabled} 
 					onScoreChange={this.onScoreChange} 
 					players={this.state.players}
+					id={this.state.players[1].id}
 					/>
 			</div>
 			<div className={styles.footer}>
