@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Vollkorn');
 
 body {
-	background: #0000FF;
 	font-family: 'Vollkorn', serif;
 	color: #FAFAFA;
+	background-color: blue;
 }
-
 h2 {
 	font-size: 1.5em;
 	letter-spacing: 3px;
@@ -52,7 +51,8 @@ button:disabled {
 	display: block;
 	border: 20px groove yellow;
 	border-radius: 10px;
-	background-color: #856025;
+	background:url(../scoreboard.jpg);
+	background-size: cover;
 	box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.8), 0 12px 60px 0 rgba(0, 0, 0, 0.38);
 	margin-bottom: 50px;
 }

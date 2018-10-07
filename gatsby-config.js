@@ -1,6 +1,7 @@
 module.exports = {
 	siteMetadata: {
 		title: `Dreidel Duel!`,
+		author: `Adam Bodie`
 	},
     plugins: [
       {

@@ -8,6 +8,7 @@ export default () => (
         site {
           siteMetadata {
             title
+            author
           }
         }
       }
@@ -16,6 +17,7 @@ export default () => (
 	render={data => (
 		<div className={styles.jumbotron}>
 			<h1 className={styles.display4}>{data.site.siteMetadata.title}</h1>
+			<h3 className={styles.display3}>by {data.site.siteMetadata.author}</h3>
 		</div>
 )}
 />

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import styles from "./start.module.css";
 
-export default class Reset extends Component {
+export default class Start extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);

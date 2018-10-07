@@ -15,6 +15,12 @@
     font-weight: 300;
     line-height: 1.2;
 }
+.display3 {
+	font-family: 'Ravi Prakash', cursive;
+	text-shadow: 5px 5px 10px #000;
+	text-align: right;
+	margin: 0;
+}
 @media (min-width: 576px) {
 	.jumbotron {
 		padding: 3rem 1.5rem;
