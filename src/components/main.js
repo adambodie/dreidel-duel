@@ -48,6 +48,7 @@ export default class Main extends Component {
 			isDisabled: !prevState.isDisabled,
 			pot: 10,
 			spin: "",
+			isButtonDisabled: true,
 			turn: 0
 		}));
 	}
