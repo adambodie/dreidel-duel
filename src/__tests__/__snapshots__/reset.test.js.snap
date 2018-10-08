@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reset renders correctly 1`] = `
+<button
+  className="resetAction"
+  onClick={[Function]}
+>
+  Reset
+</button>
+`;

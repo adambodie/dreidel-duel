@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="players"
+  >
+    <div
+      className="player"
+    >
+      <h2>
+        Player 
+        1
+      </h2>
+      <input
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <div
+        className="counter"
+      >
+        <button
+          className="counterAction"
+          disabled={true}
+          onClick={[Function]}
+        >
+          SPIN
+        </button>
+        <div
+          className="counterScore"
+        >
+          5
+        </div>
+      </div>
+    </div>
+    <h2
+      style={
+        Object {
+          "fontSize": 64,
+        }
+      }
+    >
+      
+    </h2>
+    <div
+      className="player"
+    >
+      <h2>
+        Player 
+        2
+      </h2>
+      <input
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <div
+        className="counter"
+      >
+        <button
+          className="counterAction"
+          disabled={true}
+          onClick={[Function]}
+        >
+          SPIN
+        </button>
+        <div
+          className="counterScore"
+        >
+          5
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="footer"
+  >
+    <button
+      className="addAction"
+      disabled={true}
+      onClick={[Function]}
+    >
+      Add Coin
+    </button>
+    <div>
+      <h3>
+        Coins in the Pot:
+      </h3>
+      <h2>
+        10
+      </h2>
+    </div>
+  </div>
+  <div
+    className="buttons"
+  >
+    <button
+      className="resetAction"
+      disabled={true}
+      onClick={[Function]}
+    >
+      Reset
+    </button>
+    <button
+      className="startAction"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Start
+    </button>
+  </div>
+</div>
+`;
