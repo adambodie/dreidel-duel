@@ -25,7 +25,10 @@ input {
 
 .counterAction:hover {
 	background: #EE9900;
-	cursor: pointer;
+}
+
+.counterAction:disabled:hover {
+	background-color: #D3D3D3;
 }
 
 /* PLAYERS CSS

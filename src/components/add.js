@@ -1,6 +1,6 @@
 // Libs
 import React, { Component } from "react";
-import styles from "./add.module.css";
+import styles from "./main.module.css";
 
 export default class Add extends Component {
 	constructor(props) {
@@ -18,7 +18,7 @@ export default class Add extends Component {
 	render() {
 		let disabled = this.props.disabled;
 		return (
-			<button className={styles.addAction} onClick={this.handleChange} disabled={disabled}>
+			<button className={styles.action} onClick={this.handleChange} disabled={disabled}>
 				Add Coin
 			</button>
 		);

@@ -1,6 +1,6 @@
 // Libs
 import React, { Component } from "react";
-import styles from "./reset.module.css";
+import styles from "./main.module.css";
 
 export default class Reset extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class Reset extends Component {
 
   render() {
     return (
-          <button className={styles.resetAction} onClick={this.handleChange} disabled={this.props.disabled} >
+          <button className={styles.action} onClick={this.handleChange} disabled={this.props.disabled} >
             Reset
           </button>
     );

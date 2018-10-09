@@ -1,6 +1,6 @@
 // Libs
 import React, { Component } from "react";
-import styles from "./start.module.css";
+import styles from "./main.module.css";
 
 export default class Start extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class Start extends Component {
 	  let disabled = this.props.disabled;
     return (
           <button
-            className={styles.startAction}
+            className={styles.action}
             onClick={this.handleChange}
             disabled={disabled}
           >
