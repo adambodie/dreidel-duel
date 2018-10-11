@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import Add from "../components/add"
+import Add from "../components/Add"
 import {shallow} from "enzyme"
 
 describe("Add", () =>

@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import Spin from "../components/spin"
+import Spin from "../components/Spin"
 import {shallow} from "enzyme"
 
 describe("Spin", () =>

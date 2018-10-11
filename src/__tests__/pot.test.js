@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import Pot from "../components/pot"
+import Pot from "../components/Pot"
 import {shallow} from "enzyme"
 
 describe("Pot", () =>

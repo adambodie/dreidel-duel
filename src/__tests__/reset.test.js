@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import Reset from "../components/reset"
+import Reset from "../components/Reset"
 import {shallow} from "enzyme"
 
 describe("Reset", () =>

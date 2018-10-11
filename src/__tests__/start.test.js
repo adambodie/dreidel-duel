@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import Start from "../components/start";
+import Start from "../components/Start";
 import {shallow} from "enzyme"
 
 describe("Start", () =>

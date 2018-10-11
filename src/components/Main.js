@@ -1,12 +1,12 @@
 // Libs
 import React, { Component } from "react";
 import styles from "./main.module.css";
-import Pot from './pot.js';
-import Spin from './spin.js';
-import Reset from './reset.js';
-import Start from './start.js';
-import Add from './add.js';
-import Player from './player.js';
+import Pot from './Pot';
+import Spin from './Spin';
+import Reset from './Reset';
+import Start from './Start';
+import Add from './Add';
+import Player from './Player';
 
 export default class Main extends Component {
 	constructor() {

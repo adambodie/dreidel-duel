@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import { PureHeader as Header } from "../components/header"
+import { PureHeader as Header } from "../components/Header"
 import {shallow} from "enzyme"
 
 describe("Header", () =>

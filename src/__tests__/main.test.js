@@ -1,7 +1,7 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import Main from "../components/main"
-import Player from "../components/player"
+import Main from "../components/Main"
+import Player from "../components/Player"
 import {shallow} from "enzyme"
 
 describe("Main", () =>

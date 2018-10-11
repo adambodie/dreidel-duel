@@ -1,7 +1,7 @@
 // Libs
 import React, { Component } from "react";
-import Main from '../components/main.js';
-import { PureHeader as Header } from '../components/header.js';
+import Main from '../components/Main';
+import { PureHeader as Header } from '../components/Header';
 import styles from "../components/main.module.css";
 import {Helmet} from "react-helmet";
 
