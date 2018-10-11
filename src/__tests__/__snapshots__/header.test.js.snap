@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders correctly 1`] = `
-<div>
-  Loading (StaticQuery)
+<div
+  className="jumbotron"
+>
+  <h1
+    className="display4"
+  >
+    Dreidel Duel!
+  </h1>
+  <h3
+    className="display3"
+  >
+    by 
+    Adam Bodie
+  </h3>
 </div>
 `;
