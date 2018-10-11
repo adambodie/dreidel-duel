@@ -2,7 +2,7 @@
 
 exports[`Reset renders correctly 1`] = `
 <button
-  className="resetAction"
+  className="action"
   onClick={[Function]}
 >
   Reset

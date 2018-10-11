@@ -2,7 +2,7 @@
 
 exports[`Add renders correctly 1`] = `
 <button
-  className="addAction"
+  className="action"
   onClick={[Function]}
 >
   Add Coin

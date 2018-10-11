@@ -40,6 +40,7 @@ exports[`Main renders correctly 1`] = `
       style={
         Object {
           "fontSize": 64,
+          "width": 55,
         }
       }
     >
@@ -79,7 +80,7 @@ exports[`Main renders correctly 1`] = `
     className="footer"
   >
     <button
-      className="addAction"
+      className="action"
       disabled={true}
       onClick={[Function]}
     >
@@ -98,14 +99,14 @@ exports[`Main renders correctly 1`] = `
     className="buttons"
   >
     <button
-      className="resetAction"
+      className="action"
       disabled={true}
       onClick={[Function]}
     >
       Reset
     </button>
     <button
-      className="startAction"
+      className="action"
       disabled={false}
       onClick={[Function]}
     >
