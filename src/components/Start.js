@@ -1,6 +1,6 @@
 // Libs
 import React, { Component } from "react";
-import styles from "./main.module.css";
+import styles from "../css/main.module.css";
 
 export default class Start extends Component {
   constructor(props) {

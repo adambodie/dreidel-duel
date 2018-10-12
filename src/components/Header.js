@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./header.module.css";
+import styles from "../css/header.module.css";
 import { StaticQuery, graphql } from "gatsby"
 
 export const PureHeader = ({ data }) => (

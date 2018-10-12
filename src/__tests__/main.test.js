@@ -13,4 +13,5 @@ describe("Main", () =>
 		const wrapper = shallow(<Main />);
 		expect(wrapper.find(Player).length).toBe(2);
 	})
+	
 )
