@@ -1,4 +1,3 @@
-// Libs
 import React, { Component } from "react";
 import styles from "./main.module.css";
 
@@ -6,9 +5,6 @@ export default class Add extends Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
-		this.state = {
-			disabled: true
-		}
 	}
 
 	handleChange(e) {
@@ -16,9 +12,8 @@ export default class Add extends Component {
 	}
 
 	render() {
-		let disabled = this.props.disabled;
 		return (
-			<button className={styles.action} onClick={this.handleChange} disabled={disabled}>
+			<button className={styles.action} onClick={this.handleChange} disabled={this.props.disabled}>
 				Add Coin
 			</button>
 		);

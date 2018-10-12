@@ -1,4 +1,3 @@
-// Libs
 import React, { Component } from "react";
 import styles from "./player.module.css";
 

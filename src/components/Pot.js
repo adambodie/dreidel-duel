@@ -1,12 +1,12 @@
-import React, {Component} from "react"
+import React from "react"
 
-export default class Pot extends Component {
-    render() {
+const Pot = (props) => {
 		return(
 			<div>
 				<h3>Coins in the Pot:</h3>
-				<h2>{this.props.pot}</h2>
+				<h2>{props.pot}</h2>
 			</div>
 		)
-	}
 }
+
+export default Pot;

@@ -6,10 +6,6 @@ export default class Start extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.state = {
-		disabled: false
-		
-	}
   }
 
   handleChange(e) {
@@ -17,12 +13,11 @@ export default class Start extends Component {
   }
 
   render() {
-	  let disabled = this.props.disabled;
     return (
           <button
             className={styles.action}
             onClick={this.handleChange}
-            disabled={disabled}
+            disabled={this.props.disabled}
           >
             Start
           </button>

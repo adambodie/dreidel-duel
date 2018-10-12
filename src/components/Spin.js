@@ -1,9 +1,5 @@
-import React, {Component} from "react"
+import React from "react"
 
-export default class Spin extends Component {
-    render() {
-		return(
-			<h2 style={{fontSize: 64, width: 55}}>{this.props.spin}</h2>
-		)
-	}
-}
+const Spin =(props) => <h2 style={{fontSize: 64, width: 55}}>{props.spin}</h2>
+
+export default Spin;
