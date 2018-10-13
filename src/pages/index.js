@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import Main from '../components/Main';
 import { PureHeader as Header } from '../components/Header';
-import styles from "../css/main.module.css";
+import styles from "../css/main.module.scss";
 import {Helmet} from "react-helmet";
 
 const data = {

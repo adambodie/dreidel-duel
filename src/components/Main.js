@@ -1,6 +1,6 @@
 // Libs
 import React, { Component } from "react";
-import styles from "../css/main.module.css";
+import styles from "../css/main.module.scss";
 import Pot from './Pot';
 import Spin from './Spin';
 import Reset from './Reset';

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Vollkorn');
+@import "_import";
 
 body {
 	font-family: 'Vollkorn', serif;
@@ -19,45 +19,24 @@ h2 {
 	align-items: center;   
 }
 button {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;	
+	@include auto;
+	&:focus {
+		outline: none;
+	}
+	&:active {
+		transform: translateY(4px);
+	}
+	&:disabled {
+		background: #D3D3D3;
+	}
 }
-
-button:focus {
-	outline: none;
-}
-button:active {
-	transform: translateY(4px);
-}
-
-button:disabled {
-	background: #D3D3D3;
-}
-
 .action {
-	background: #0000FF;
+	@include buttonStyle(5px, 15px, #0000FF, #fafafa, 2em, 15px, #000033);
 	margin-bottom: 20px;
 	font-weight: bold;
-	color: #FAFAFA;
-	font-size: 2em;
-	padding: 5px 15px;
-	border-radius: 15px;
-	box-shadow: 0 10px #000033;
-	border: none;
+	@include buttons(#000080, #999, #D3D3D3);
 }
 
-.action:disabled:hover {
-	background-color: #D3D3D3;
-}
-
-.action:hover {
-	background-color: #000080;
-}
-
-.action:disabled {
-	box-shadow: 0 10px #999;
-}
 
 .players {
 	display: flex;
@@ -69,9 +48,7 @@ button:disabled {
  ---------------------*/
 
 .scoreboard {
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
+	@include auto;
 	border: 20px groove yellow;
 	border-radius: 10px;
 	background:url(../images/scoreboard.jpg);
@@ -80,18 +57,12 @@ button:disabled {
 	margin-bottom: 50px;
 }
 
-.jumbotron {
-	text-align: center;
-	background: #0000FF;
-	padding: 0;
-}
-
 .footer {
 	padding: 5px 10px;
 	text-align: center;
-}
-.footer h2 {
-	font-size: 3em;
+	h2 {
+		font-size: 3em;
+	}
 }
 span {
 	font-size: 8em;

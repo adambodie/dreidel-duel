@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "../css/main.module.css";
+import styles from "../css/main.module.scss";
 
 export default class Add extends Component {
 	constructor(props) {

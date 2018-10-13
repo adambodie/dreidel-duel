@@ -1,3 +1,4 @@
+@import "_import";
 
 input {
 	width: 200px;
@@ -7,28 +8,12 @@ input {
 }
 
 .counterAction {
-	padding: 25px 30px;
-	font-size: 24px;
+	@include buttonStyle(25px, 30px, #ffe015, #fff, 24px, 100%, #332d04);
 	text-align: center;
 	text-decoration: none;
-	color: #fff;
-	background-color: #ffe015;
-	border: none;
-	border-radius: 100%;
-	box-shadow: 0 10px #332d04;
+	@include buttons(#80700a, #999, #D3D3D3);
 }
 
-.counterAction:hover {
-	background: #80700a;
-}
-
-.counterAction:disabled:hover {
-	background-color: #D3D3D3;
-}
-
-.counterAction:disabled {
-	box-shadow: 0 10px #999;
-}
 /* PLAYERS CSS
  -----------------------*/
 
@@ -53,9 +38,7 @@ input {
 /* COUNTER CSS
 ------------------------*/
 .counter {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	@include auto;
 }
 
 .counterScore {

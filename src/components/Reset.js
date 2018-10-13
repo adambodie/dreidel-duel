@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "../css/main.module.css";
+import styles from "../css/main.module.scss";
 
 export default class Reset extends Component {
   constructor(props) {
