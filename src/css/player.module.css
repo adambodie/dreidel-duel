@@ -12,25 +12,23 @@ input {
 	text-align: center;
 	text-decoration: none;
 	color: #fff;
-	background-color: #F5D714;
+	background-color: #ffe015;
 	border: none;
 	border-radius: 100%;
+	box-shadow: 0 10px #332d04;
 }
-
-
-.counterAction:active {
-	background-color: #C46212;
-}
-
 
 .counterAction:hover {
-	background: #EE9900;
+	background: #80700a;
 }
 
 .counterAction:disabled:hover {
 	background-color: #D3D3D3;
 }
 
+.counterAction:disabled {
+	box-shadow: 0 10px #999;
+}
 /* PLAYERS CSS
  -----------------------*/
 

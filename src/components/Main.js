@@ -8,6 +8,7 @@ import Start from './Start';
 import Add from './Add';
 import Player from './Player';
 
+
 export default class Main extends Component {
 	constructor() {
 		super();
@@ -149,7 +150,7 @@ export default class Main extends Component {
 					players={this.state.players}
 					id={this.state.players[0].id}
 					/>
-				<Spin spin={this.state.spin} />
+					<Spin spin={this.state.spin} />
 				<Player  
 					score={this.state.players[1].score} 
 					disabled={this.state.players[1].isDisabled} 
