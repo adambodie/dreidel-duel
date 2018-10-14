@@ -3,7 +3,7 @@
 input {
 	width: 200px;
 	display: block;
-	margin: 20px auto;
+	margin: 20px auto!important;
 	text-align: center;
 }
 
@@ -25,14 +25,9 @@ input {
 }
 
 .playerName {
-	font-size: 24px;
+	font-size: 2rem;
 	text-align: center;
-	padding: 10px 10px 10px 10px;
-}
-
-.playerScore {
-	width: 100px;
-	background: #0000FF;
+	font-family: 'Vollkorn', serif!important;
 }
 
 /* COUNTER CSS
@@ -44,7 +39,7 @@ input {
 .counterScore {
 	color: #FAFAFA;
 	text-align: center;
-	font-family: 'Vollkorn', serif;
+	font-family: 'Vollkorn', serif!important;
 	padding: 20px;
 	font-size: 2em;
 }

@@ -2,9 +2,9 @@ import React from "react"
 
 const Pot = (props) => {
 		return(
-			<div>
-				<h3>Coins in the Pot:</h3>
-				<h2>{props.pot}</h2>
+			<div style={{marginTop: 10}}>
+				<h3 style={{fontFamily: 'Vollkorn'}}>Coins in the Pot:</h3>
+				<h2 style={{fontFamily: 'Vollkorn'}}>{props.pot}</h2>
 			</div>
 		)
 }

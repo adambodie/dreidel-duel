@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import Start from "../components/Start";
+import Start from "../components/Start"
 import {shallow} from "enzyme"
 
 describe("Start", () =>
@@ -11,8 +11,6 @@ describe("Start", () =>
 	it('renders a `button`', () => {
 		const wrapper = shallow(<Start />);
 		expect(wrapper.find('button').length).toBe(1);
-	})		
+	})
 )
-
-
 

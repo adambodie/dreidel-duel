@@ -22,7 +22,7 @@ export default class Player extends Component {
   render() {
     return (
 		<div className={styles.player}>
-			<h2>Player {this.props.id}</h2>
+			<h2 className={styles.playerName}>Player {this.props.id}</h2>
 			<input type="text" value={this.state.value} onChange={this.handleNameChange} />
 			<div className={styles.counter}>
 				<button

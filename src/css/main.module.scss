@@ -1,8 +1,8 @@
 @import "_import";
 
 body {
-	font-family: 'Vollkorn', serif;
-	color: #FAFAFA;
+	font-family: 'Vollkorn', serif!important;
+	color: #FAFAFA!important;
 	background-color: blue;
 }
 h2 {
@@ -15,8 +15,8 @@ h2 {
 /* BUTTON STYLES
 ----------------------*/
 .buttons {
-	display: flex;
-	align-items: center;   
+	display: flex!important;
+	align-items: center!important;   
 }
 button {
 	@include auto;
@@ -53,8 +53,9 @@ button {
 	border-radius: 10px;
 	background:url(../images/scoreboard.jpg);
 	background-size: cover;
+	padding: 30px;
 	box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.8), 0 12px 60px 0 rgba(0, 0, 0, 0.38);
-	margin-bottom: 50px;
+	margin-bottom: 50px!important;
 }
 
 .footer {

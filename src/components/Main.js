@@ -89,7 +89,7 @@ export default class Main extends Component {
 			newPlayers.forEach((element) => element.isDisabled = true );
 			this.setState(prevState => ({
 				newPlayers,
-				pot: "Game Over, play again"
+				pot: "Game Over"
 			}));
 		} else {
 			switch (dreidel) {				
