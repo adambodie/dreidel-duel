@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pot renders correctly 1`] = `
+<div>
+  <h3>
+    Coins in the Pot:
+  </h3>
+  <h2 />
+</div>
+`;
