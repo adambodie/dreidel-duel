@@ -47,6 +47,19 @@ button {
 /* MISCELLANEOUS CSS
  ---------------------*/
 
+.dreidel {
+	position: relative;
+	margin: 5px;
+	h2 {
+		font-size: 64px; 
+		width: 55px; 
+		font-family: 'Vollkorn';
+		position: absolute;
+		top: 40%;
+		left: 25%;
+	}
+}
+
 .scoreboard {
 	@include auto;
 	border: 20px groove yellow;

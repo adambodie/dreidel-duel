@@ -1,5 +1,11 @@
 import React from "react"
-
-const Spin =(props) => <h2 style={{fontSize: 64, width: 55, fontFamily: 'Vollkorn'}}>{props.spin}</h2>
+import dreidel  from '../images/dreidel.png'
+import styles from "../css/main.module.scss";
+const Spin =(props) => (
+	<div className={styles.dreidel}>
+		<img src={dreidel} alt="Dreidel"/>
+		<h2>{props.spin}</h2>
+	</div>
+)
 
 export default Spin;
