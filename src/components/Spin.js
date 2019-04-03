@@ -1,5 +1,5 @@
 import React from "react"
-import dreidel  from '../images/dreidel.png'
+import dreidel  from '../images/dreidel.gif'
 import styles from "../css/main.module.scss";
 const Spin =(props) => (
 	<div className={styles.dreidel}>
