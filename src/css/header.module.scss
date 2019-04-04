@@ -1,11 +1,18 @@
 @import '_import';
 
+.question {
+	color: #000080;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
 .jumbotron {
 	padding: 0rem;
     margin-bottom: 2rem;
     background:url(../images/dreidel.jpg);
     background-size: cover;
     background-position: bottom;
+    position: relative;
 }
 .display4 {
 	font-family: 'Ravi Prakash', cursive;
@@ -24,3 +31,36 @@
 	color: white;
 }
 
+.modal {
+	h2 {
+		color: blue;
+		margin-bottom: 0px;
+		padding: 5px;
+	}
+}
+
+.modalHeader {
+	position: relative;
+	border-bottom: 2px solid blue;
+	margin: -20px;
+}
+
+.instructions {
+	margin-top: 25px;
+	p {
+		color: black;
+	}
+	span {
+		font-size: 2em;
+		font-weight: bold;
+	}
+}
+
+.instructionFlex {
+	display: flex;
+	flex-wrap: wrap;
+	p {
+		width: 50%;
+		text-align: center;
+	}
+}

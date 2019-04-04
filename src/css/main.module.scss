@@ -50,6 +50,9 @@ button {
 .dreidel {
 	position: relative;
 	margin: 5px;
+	img {
+		max-width: 100px;
+	}
 	h2 {
 		font-size: 64px; 
 		width: 55px; 
@@ -78,16 +81,10 @@ button {
 		font-size: 3em;
 	}
 }
-span {
-	font-size: 8em;
-	position: absolute;
-	margin-top: -200px;
-	margin-left: -50px;
-	width: 105px;
-}
+
 
 @media (min-width: 768px) {
 	.scoreboard {
-		width: 600px;
+		width: 800px;
 	}
 }
