@@ -75,14 +75,15 @@ export default class Main extends Component {
 	}
   
 	onScoreChange() {
+		const { turn, pot, players } = this.state;
 		let dreidel = Math.floor(Math.random() * 4);
 		const hebrew = ["נ", "שׁ", "ה", "ג"];
 		let currentSpin = hebrew[dreidel];
-		const newPlayers = [...this.state.players];
+		const newPlayers = [...players];
 		let playerOne = newPlayers[0];
 		let playerTwo = newPlayers[1];
 
-		if (playerOne.isDisabled === true && this.state.turn >= 1) {
+		if (playerOne.isDisabled === true && turn >= 1) {
 			this.setState(prevState => ({ isButtonDisabled: false }));
 		}
 		if ((playerOne.score <= 0 || playerTwo.score <= 0) && (dreidel === 1 || dreidel === 3)) {
@@ -92,8 +93,8 @@ export default class Main extends Component {
 				pot: "Game Over"
 			}));
 		} else {
-			switch (dreidel) {				
-				case 0:	/* Spin a Nun - Nothing */				
+			switch (dreidel) {
+				case 0:	/* Spin a Nun - Nothing */
 					if (playerOne.isDisabled === false) {
 						newPlayers.forEach((element) => element.isDisabled = !element.isDisabled );
 					} else {
@@ -108,24 +109,24 @@ export default class Main extends Component {
 						playerTwo.score -= 1;
 						playerTwo.isDisabled = true;
 					}
-					this.setState(prevState => ({ pot: this.state.pot + 1 }));
+					this.setState(prevState => ({ pot: pot + 1 }));
 					break;
 				case 2:/* Spin a Hay - Win half of your coins in the Pot */
 					if (playerOne.isDisabled === false) {
 						newPlayers.forEach((element) => element.isDisabled = !element.isDisabled );
-						playerOne.score += Math.round(this.state.pot / 2);
+						playerOne.score += Math.round(pot / 2);
 					} else {
-						playerTwo.score += Math.round(this.state.pot / 2);
+						playerTwo.score += Math.round(pot / 2);
 						playerTwo.isDisabled = true;
 					}
-					this.setState(prevState => ({ pot: Math.floor(this.state.pot / 2) }));
+					this.setState(prevState => ({ pot: Math.floor(pot / 2) }));
 					break;
 				default: /* Spin a Gimel - Win everything  */
 					if (playerOne.isDisabled === false) {
-						playerOne.score += this.state.pot;
+						playerOne.score += pot;
 						newPlayers.forEach((element) => element.isDisabled = !element.isDisabled );
 					} else {
-						playerTwo.score += this.state.pot;
+						playerTwo.score += pot;
 						playerTwo.isDisabled = true;
 					}
 					newPlayers.forEach((element) => element.score  -= 1 );
@@ -134,40 +135,41 @@ export default class Main extends Component {
 			this.setState(prevState => ({
 				newPlayers,
 				spin: currentSpin,
-				turn: this.state.turn + 1
+				turn: turn + 1
 			}));
 		}
 	}
 
-  render() {
-    return (
-		<div className={styles.container}>
-			<div className={styles.players}>
-				<Player 
-					score={this.state.players[0].score} 
-					disabled={this.state.players[0].isDisabled} 
-					onScoreChange={this.onScoreChange} 
-					players={this.state.players}
-					id={this.state.players[0].id}
-				/>
-				<Spin spin={this.state.spin} />
-				<Player  
-					score={this.state.players[1].score} 
-					disabled={this.state.players[1].isDisabled} 
-					onScoreChange={this.onScoreChange} 
-					players={this.state.players}
-					id={this.state.players[1].id}
-				/>
+	render() {
+	const { pot, spin, players, isButtonDisabled, isDisabled } = this.state;
+		return (
+			<div className={styles.container}>
+				<div className={styles.players}>
+					<Player 
+						score={players[0].score} 
+						disabled={players[0].isDisabled} 
+						onScoreChange={this.onScoreChange} 
+						players={players}
+						id={players[0].id}
+					/>
+					<Spin spin={spin} />
+					<Player  
+						score={players[1].score} 
+						disabled={players[1].isDisabled} 
+						onScoreChange={this.onScoreChange} 
+						players={players}
+						id={players[1].id}
+					/>
+				</div>
+				<div className={styles.footer}>
+					<Add onAddChange={this.onAddChange} disabled={isButtonDisabled}/>
+					<Pot pot={pot} />
+				</div>
+				<div className={styles.buttons}>
+					<Reset onResetChange={this.onResetChange} disabled={isDisabled} />
+					<Start onStartChange={this.onStartChange} disabled={!isDisabled} />
+				</div>
 			</div>
-			<div className={styles.footer}>
-				<Add onAddChange={this.onAddChange} disabled={this.state.isButtonDisabled}/>
-				<Pot pot={this.state.pot} />
-			</div>
-			<div className={styles.buttons}>
-				<Reset onResetChange={this.onResetChange} disabled={this.state.isDisabled} />
-				<Start onStartChange={this.onStartChange} disabled={!this.state.isDisabled} />
-			</div>
-        </div>
-    );
-  }
+		);
+	}
 }
