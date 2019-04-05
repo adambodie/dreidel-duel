@@ -1,14 +1,14 @@
 @import "_import";
 
 input {
-	width: 200px;
+	width: 175px;
 	display: block;
 	margin: 20px auto!important;
 	text-align: center;
 }
 
 .counterAction {
-	@include buttonStyle(25px, 30px, #ffe015, #fff, 24px, 100%, #332d04);
+	@include buttonStyle(15px, 20px, #ffe015, #fff, 24px, 100%, #332d04);
 	text-align: center;
 	text-decoration: none;
 	@include buttons(#80700a, #999, #D3D3D3);

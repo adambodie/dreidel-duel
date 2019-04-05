@@ -3,8 +3,11 @@
 .question {
 	color: #000080;
 	position: absolute;
-	right: 0;
-	top: 0;
+	right: 10px;
+	top: 10px;
+	&:hover {
+		color: darken(#000080, 10%);
+	}
 }
 .jumbotron {
 	padding: 0rem;
@@ -18,10 +21,11 @@
 	font-family: 'Ravi Prakash', cursive;
 	text-shadow: 5px 5px 10px #000;
 	text-align: center;
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: 300;
 	line-height: 1.1;
 	color: white;
+	margin: 0!important;
 }
 .display3 {
 	font-family: 'Ravi Prakash', cursive;
@@ -47,6 +51,7 @@
 
 .instructions {
 	margin-top: 25px;
+	padding: 20px;
 	p {
 		color: black;
 	}
@@ -62,5 +67,15 @@
 	p {
 		width: 50%;
 		text-align: center;
+	}
+}
+
+.close {
+	color: blue;
+	position: absolute;
+	top: 0;
+	right: 0;
+	&:hover {
+		color: darken(blue, 20%);
 	}
 }

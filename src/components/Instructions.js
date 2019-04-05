@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { NUN, SHIN, HAY, GIMEL } from './Constants';
 import Modal from 'react-modal';
+import ReactTooltip from 'react-tooltip';
 import FontAwesome from 'react-fontawesome';
 import styles from "../css/header.module.scss";
 
@@ -18,7 +20,6 @@ Modal.setAppElement('#___gatsby')
 export default class Instructions extends Component {
 	constructor() {
 		super();
-
 		this.state = {
 			modalIsOpen: false
 		};
@@ -58,21 +59,20 @@ export default class Instructions extends Component {
 							name='window-close'
 							className={styles.close}
 							size='2x'
-							style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: 'black', position: 'absolute', right: 0, top: 0 }}
 						/>
 					</header>
+					<ReactTooltip />
 					<div className={styles.instructions}>
 						<p>Spin the dreidel.  What happens depends on which side it lands.</p>
 						<p>When the last player of each turn plays, each player places a coin in the pot.</p>
 						<p>If there are no coins in the pot, each player places a coin in the pot.</p>
 						<p>When a player has no coins and is unable to gain any coins, they are eliminated from the game.</p>
 						<div className={styles.instructionFlex}>
-							<p><span>ג</span> - Take all the coins in the pot.</p>
-							<p><span>ה</span> - Take half of the coins in the pot.</p>
-							<p><span>שׁ</span> - Put one coin in the pot.</p>
-							<p><span>נ</span> - Do nothing.</p>
+							<p><span data-tip="Gimel">{GIMEL}</span> - Take all the coins in the pot.</p>
+							<p><span data-tip="Hay">{HAY}</span> - Take half of the coins in the pot.</p>
+							<p><span data-tip="Shin">{SHIN}</span> - Put one coin in the pot.</p>
+							<p><span data-tip="Nun">{NUN}</span> - Do nothing.</p>
 						</div>
-
 					</div>
 				</div>
 			</Modal>

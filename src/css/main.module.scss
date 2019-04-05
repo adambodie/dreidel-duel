@@ -12,11 +12,18 @@ h2 {
 	text-align: center;
 }
 
+.info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
 /* BUTTON STYLES
 ----------------------*/
 .buttons {
 	display: flex!important;
-	align-items: center!important;   
+	align-items: flex-start!important;   
 }
 button {
 	@include auto;
@@ -75,8 +82,6 @@ button {
 }
 
 .footer {
-	padding: 5px 10px;
-	text-align: center;
 	h2 {
 		font-size: 3em;
 	}

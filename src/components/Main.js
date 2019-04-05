@@ -1,6 +1,7 @@
 // Libs
 import React, { Component } from "react";
 import styles from "../css/main.module.scss";
+import { NUN, SHIN, HAY, GIMEL } from './Constants';
 import Pot from './Pot';
 import Spin from './Spin';
 import Reset from './Reset';
@@ -77,7 +78,7 @@ export default class Main extends Component {
 	onScoreChange() {
 		const { turn, pot, players } = this.state;
 		let dreidel = Math.floor(Math.random() * 4);
-		const hebrew = ["נ", "שׁ", "ה", "ג"];
+		const hebrew = [NUN, SHIN, HAY, GIMEL];
 		let currentSpin = hebrew[dreidel];
 		const newPlayers = [...players];
 		let playerOne = newPlayers[0];
@@ -152,7 +153,10 @@ export default class Main extends Component {
 						players={players}
 						id={players[0].id}
 					/>
-					<Spin spin={spin} />
+					<div className={styles.info}>
+						<Spin spin={spin} />
+						<Pot pot={pot} />
+					</div>
 					<Player  
 						score={players[1].score} 
 						disabled={players[1].isDisabled} 
@@ -161,12 +165,9 @@ export default class Main extends Component {
 						id={players[1].id}
 					/>
 				</div>
-				<div className={styles.footer}>
-					<Add onAddChange={this.onAddChange} disabled={isButtonDisabled}/>
-					<Pot pot={pot} />
-				</div>
 				<div className={styles.buttons}>
 					<Reset onResetChange={this.onResetChange} disabled={isDisabled} />
+					<Add onAddChange={this.onAddChange} disabled={isButtonDisabled}/>
 					<Start onStartChange={this.onStartChange} disabled={!isDisabled} />
 				</div>
 			</div>
