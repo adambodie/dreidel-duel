@@ -29,3 +29,20 @@
     border: none;
 }
 
+@mixin column() {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 375px;
+}
+
+@mixin coin() {
+	list-style: none;
+	width: 100px;
+	height: 50px; 
+	background-color: #ffe015;
+	border: 1px solid black;
+	border-radius: 100%; 
+	box-shadow: 0 10px #332d04;
+	margin-bottom: -60px;
+}

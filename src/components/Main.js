@@ -61,9 +61,10 @@ export default class Main extends Component {
 		let playerTwo = newPlayers[1];
 		if (playerOne.score === 0 || playerTwo.score === 0) {
 			newPlayers.forEach((element) => element.isDisabled = true );
+			alert("Game Over");
 			this.setState(prevState => ({
 				newPlayers,
-				pot: "Game Over, play again"
+				pot: ""
 			}));
 		} else {
 			if (playerOne.isDisabled === true &&  this.state.turn >= 1) {
@@ -89,9 +90,10 @@ export default class Main extends Component {
 		}
 		if ((playerOne.score <= 0 || playerTwo.score <= 0) && (dreidel === 1 || dreidel === 3)) {
 			newPlayers.forEach((element) => element.isDisabled = true );
+			alert("Game Over");
 			this.setState(prevState => ({
 				newPlayers,
-				pot: "Game Over"
+				pot: ""
 			}));
 		} else {
 			switch (dreidel) {

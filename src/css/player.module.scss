@@ -18,7 +18,7 @@ input {
  -----------------------*/
 
 .player {
-	display: inline-block;
+	@include column();
 	font-size: 1.2em;
 	letter-spacing: 2px;
 }
@@ -32,14 +32,35 @@ input {
 /* COUNTER CSS
 ------------------------*/
 .counter {
-	@include auto;
+	@include auto();
+	position: relative;
 }
-
 .counterScore {
 	color: #FAFAFA;
 	text-align: center;
 	font-family: 'Vollkorn', serif!important;
-	padding: 20px;
 	font-size: 2em;
+	li {
+		@include coin();
+	}
+	p {
+		position: absolute;
+		width: 100px;
+		color: #332d04;
+	}
 }
 
+.pot {
+	position: relative;
+	li {
+		@include coin();
+	}
+	p {
+		font-size: 2.5em;
+		z-index: 10000;
+		position: absolute;
+		width: 100px;
+		text-align: center;
+		color: #332d04;
+	}
+}
