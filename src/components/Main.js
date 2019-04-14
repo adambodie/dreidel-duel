@@ -8,7 +8,16 @@ import Reset from './Reset';
 import Start from './Start';
 import Add from './Add';
 import Player from './Player';
-
+import store from '../store';
+import { addTurn, 
+		 resetTurn, 
+		 enableStartButton, 
+		 disableStartButton,
+		 enableResetButton, 
+		 disableResetButton,  
+		 enableAddButton,  
+		 disableAddButton,  
+		 }  from '../store/actions'; 
 
 export default class Main extends Component {
 	constructor() {
@@ -16,9 +25,6 @@ export default class Main extends Component {
 		this.state = {
 			pot: 10,
 			spin: "",
-			turn: 0,
-			isDisabled: true,
-			isButtonDisabled: true,
 			players: [
 				{ score: 5, isDisabled: true, id: 1 },
 				{ score: 5, isDisabled: true, id: 2 }
@@ -33,9 +39,10 @@ export default class Main extends Component {
 	onStartChange() {
 		const newPlayers = [...this.state.players];
 		newPlayers[0].isDisabled = false;
+		store.dispatch(disableStartButton());
+		store.dispatch(enableResetButton());
 		this.setState(prevState => ({
 			newPlayers,
-			isDisabled: !prevState.isDisabled
 		}));
 	}
 	
@@ -45,13 +52,14 @@ export default class Main extends Component {
 			item.isDisabled = true;
 			item.score = 5;
 		});
+		store.dispatch(resetTurn());
+		store.dispatch(disableResetButton());
+		store.dispatch(disableAddButton());
+		store.dispatch(enableStartButton());
 		this.setState(prevState => ({
 			newPlayers,
-			isDisabled: !prevState.isDisabled,
 			pot: 10,
 			spin: "",
-			isButtonDisabled: true,
-			turn: 0
 		}));
 	}
   
@@ -60,24 +68,24 @@ export default class Main extends Component {
 		let playerOne = newPlayers[0];
 		let playerTwo = newPlayers[1];
 		if (playerOne.score === 0 || playerTwo.score === 0) {
-			newPlayers.forEach((element) => element.isDisabled = true );
+			newPlayers.forEach((element) => element.isDisabled = store.getState().toggleButton );
 			alert("Game Over");
 			this.setState(prevState => ({
 				newPlayers,
 				pot: ""
 			}));
 		} else {
-			if (playerOne.isDisabled === true &&  this.state.turn >= 1) {
+			if (playerOne.isDisabled === true &&  store.getState().turn >= 1) {
 				newPlayers.forEach((element) => element.score -= 1 );
 				playerOne.isDisabled = false;
 				this.setState(prevState => ({ pot: this.state.pot + 2 }));
 			}
 		}
-		this.setState(prevState => ({ isButtonDisabled: true }));
+		store.dispatch(disableAddButton());
 	}
   
 	onScoreChange() {
-		const { turn, pot, players } = this.state;
+		const { pot, players } = this.state;
 		let dreidel = Math.floor(Math.random() * 4);
 		const hebrew = [NUN, SHIN, HAY, GIMEL];
 		let currentSpin = hebrew[dreidel];
@@ -85,11 +93,11 @@ export default class Main extends Component {
 		let playerOne = newPlayers[0];
 		let playerTwo = newPlayers[1];
 
-		if (playerOne.isDisabled === true && turn >= 1) {
-			this.setState(prevState => ({ isButtonDisabled: false }));
+		if (playerOne.isDisabled === true && store.getState().turn >= 1) {
+			store.dispatch(enableAddButton());
 		}
 		if ((playerOne.score <= 0 || playerTwo.score <= 0) && (dreidel === 1 || dreidel === 3)) {
-			newPlayers.forEach((element) => element.isDisabled = true );
+			newPlayers.forEach((element) => element.isDisabled = !element.isDisabled );
 			alert("Game Over");
 			this.setState(prevState => ({
 				newPlayers,
@@ -135,16 +143,16 @@ export default class Main extends Component {
 					newPlayers.forEach((element) => element.score  -= 1 );
 					this.setState(prevState => ({ pot: 2 }));
 				}
+			store.dispatch(addTurn());
 			this.setState(prevState => ({
 				newPlayers,
-				spin: currentSpin,
-				turn: turn + 1
+				spin: currentSpin
 			}));
 		}
 	}
 
 	render() {
-	const { pot, spin, players, isButtonDisabled, isDisabled } = this.state;
+	const { pot, spin, players } = this.state;
 		return (
 			<div className={styles.container}>
 				<div className={styles.players}>
@@ -168,9 +176,9 @@ export default class Main extends Component {
 					/>
 				</div>
 				<div className={styles.buttons}>
-					<Reset onResetChange={this.onResetChange} disabled={isDisabled} />
-					<Add onAddChange={this.onAddChange} disabled={isButtonDisabled}/>
-					<Start onStartChange={this.onStartChange} disabled={!isDisabled} />
+					<Reset onResetChange={this.onResetChange} disabled={store.getState().resetButton} />
+					<Add onAddChange={this.onAddChange} disabled={store.getState().addButton}/>
+					<Start onStartChange={this.onStartChange} disabled={store.getState().startButton} />
 				</div>
 			</div>
 		);

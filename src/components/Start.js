@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "../css/main.module.scss";
 
+
 export default class Start extends Component {
 	constructor() {
 		super();
