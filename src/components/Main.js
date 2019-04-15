@@ -35,15 +35,30 @@ export default class Main extends Component {
 		this.onScoreChange = this.onScoreChange.bind(this);
 		this.onAddChange = this.onAddChange.bind(this);
 	}
+	// Toggle disabled state when player1 spins
+	updateOne(player) {
+		player.forEach((element) => element.isDisabled = !element.isDisabled )
+	};
+	// Toggle disabled state and adds score when player1 spins
+	updateOneScore(players, player, number) {
+		this.updateOne(players);
+		player.score += number;
+	}
+	// Toggle disabled state and adds score when player2 spins
+	updateTwo(player, number = 0) {
+		player.isDisabled = true;
+		player.score += number;
+	}
 
+	updateScores(player, number) {
+		player.forEach((element) => element.score += number );	
+	}
 	onStartChange() {
 		const newPlayers = [...this.state.players];
 		newPlayers[0].isDisabled = false;
 		store.dispatch(disableStartButton());
 		store.dispatch(enableResetButton());
-		this.setState(prevState => ({
-			newPlayers,
-		}));
+		this.setState({newPlayers});
 	}
 	
 	onResetChange() {
@@ -56,11 +71,7 @@ export default class Main extends Component {
 		store.dispatch(disableResetButton());
 		store.dispatch(disableAddButton());
 		store.dispatch(enableStartButton());
-		this.setState(prevState => ({
-			newPlayers,
-			pot: 10,
-			spin: "",
-		}));
+		this.setState({ newPlayers, pot: 10, spin: ""});
 	}
   
 	onAddChange() {
@@ -68,23 +79,20 @@ export default class Main extends Component {
 		let playerOne = newPlayers[0];
 		let playerTwo = newPlayers[1];
 		if (playerOne.score === 0 || playerTwo.score === 0) {
-			newPlayers.forEach((element) => element.isDisabled = store.getState().toggleButton );
+			this.updateOne(newPlayers);
 			alert("Game Over");
-			this.setState(prevState => ({
-				newPlayers,
-				pot: ""
-			}));
+			this.setState({newPlayers, pot: ""});
 		} else {
 			if (playerOne.isDisabled === true &&  store.getState().turn >= 1) {
-				newPlayers.forEach((element) => element.score -= 1 );
 				playerOne.isDisabled = false;
-				this.setState(prevState => ({ pot: this.state.pot + 2 }));
+				this.updateScores(newPlayers, -1);
+				this.setState({ pot: this.state.pot + 2 });
 			}
 		}
 		store.dispatch(disableAddButton());
 	}
   
-	onScoreChange() {
+	onScoreChange() {		
 		const { pot, players } = this.state;
 		let dreidel = Math.floor(Math.random() * 4);
 		const hebrew = [NUN, SHIN, HAY, GIMEL];
@@ -92,62 +100,36 @@ export default class Main extends Component {
 		const newPlayers = [...players];
 		let playerOne = newPlayers[0];
 		let playerTwo = newPlayers[1];
+		const upperHalf = Math.round(pot / 2);
+		const lowerHalf = Math.floor(pot / 2);
 
 		if (playerOne.isDisabled === true && store.getState().turn >= 1) {
 			store.dispatch(enableAddButton());
 		}
 		if ((playerOne.score <= 0 || playerTwo.score <= 0) && (dreidel === 1 || dreidel === 3)) {
-			newPlayers.forEach((element) => element.isDisabled = !element.isDisabled );
+			this.updateOne(newPlayers);
+			this.setState({ newPlayers, pot: ""});
 			alert("Game Over");
-			this.setState(prevState => ({
-				newPlayers,
-				pot: ""
-			}));
 		} else {
 			switch (dreidel) {
 				case 0:	/* Spin a Nun - Nothing */
-					if (playerOne.isDisabled === false) {
-						newPlayers.forEach((element) => element.isDisabled = !element.isDisabled );
-					} else {
-						playerTwo.isDisabled = true;
-					}
+					playerOne.isDisabled === false ? this.updateOne(newPlayers) : this.updateTwo(playerTwo);
 					break;
 				case 1: /* Spin a Shin - Put one in the Pot */
-					if (playerOne.isDisabled === false) {
-						newPlayers.forEach((element) => element.isDisabled = !element.isDisabled );
-						playerOne.score -= 1;
-					} else {
-						playerTwo.score -= 1;
-						playerTwo.isDisabled = true;
-					}
-					this.setState(prevState => ({ pot: pot + 1 }));
+					playerOne.isDisabled === false ? this.updateOneScore(newPlayers, playerOne, -1) : this.updateTwo(playerTwo, -1);
+					this.setState({ pot: pot + 1 });
 					break;
-				case 2:/* Spin a Hay - Win half of your coins in the Pot */
-					if (playerOne.isDisabled === false) {
-						newPlayers.forEach((element) => element.isDisabled = !element.isDisabled );
-						playerOne.score += Math.round(pot / 2);
-					} else {
-						playerTwo.score += Math.round(pot / 2);
-						playerTwo.isDisabled = true;
-					}
-					this.setState(prevState => ({ pot: Math.floor(pot / 2) }));
+				case 2: /* Spin a Hay - Win half of your coins in the Pot */
+					playerOne.isDisabled === false ? this.updateOneScore(newPlayers, playerOne, upperHalf) : this.updateTwo(playerTwo, upperHalf);
+					this.setState({ pot: lowerHalf });
 					break;
 				default: /* Spin a Gimel - Win everything  */
-					if (playerOne.isDisabled === false) {
-						playerOne.score += pot;
-						newPlayers.forEach((element) => element.isDisabled = !element.isDisabled );
-					} else {
-						playerTwo.score += pot;
-						playerTwo.isDisabled = true;
-					}
-					newPlayers.forEach((element) => element.score  -= 1 );
-					this.setState(prevState => ({ pot: 2 }));
+					playerOne.isDisabled === false ? this.updateOneScore(newPlayers, playerOne, pot) : this.updateTwo(playerTwo, pot);
+					this.updateScores(newPlayers, -1);
+					this.setState({ pot: 2 });
 				}
 			store.dispatch(addTurn());
-			this.setState(prevState => ({
-				newPlayers,
-				spin: currentSpin
-			}));
+			this.setState({ newPlayers, spin: currentSpin });
 		}
 	}
 
