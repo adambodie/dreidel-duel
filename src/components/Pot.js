@@ -16,9 +16,11 @@ export default class Pot extends Component {
 	render() {
 		const { pot } = this.props;
 		return (
-			<div className={styles.pot}>
-				{ pot > 0 && (<p style={{top: -10 * pot}}>{pot}</p>)}
-				{this.loop(pot)}
+			<div className={styles.counter}>
+				<div className={styles.counterScore}>
+					{ pot > 0 && (<p style={{top: -10 * pot}}>{pot}</p>)}
+					<div className={styles.coins}>{this.loop(pot)}</div>
+				</div>
 			</div>
 		);
 	}

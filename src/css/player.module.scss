@@ -1,7 +1,5 @@
 @import "_import";
 
-
-
 .form {
 	display: flex;
 	input[type=text] {
@@ -32,6 +30,7 @@
 	@include column();
 	font-size: 1.2em;
 	letter-spacing: 2px;
+	width: 200px;
 }
 
 .playerName {
@@ -50,28 +49,13 @@
 	color: #FAFAFA;
 	text-align: center;
 	font-family: 'Vollkorn', serif!important;
-	font-size: 2em;
+	font-size: 40px;
 	li {
 		@include coin();
 	}
 	p {
 		position: absolute;
 		width: 100px;
-		color: #332d04;
-	}
-}
-
-.pot {
-	position: relative;
-	li {
-		@include coin();
-	}
-	p {
-		font-size: 2.5em;
-		z-index: 5000;
-		position: absolute;
-		width: 100px;
-		text-align: center;
 		color: #332d04;
 	}
 }
