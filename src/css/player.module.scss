@@ -3,7 +3,7 @@
 .form {
 	display: flex;
 	input[type=text] {
-		width: 175px;
+		width: 75px;
 	}
 	input[type=submit] {
 		height: 40px;
@@ -16,35 +16,28 @@
 		}
 	}
 }
+
 .counterAction {
-	@include buttonStyle(15px, 20px, #ffe015, #fff, 24px, 100%, #332d04);
+	@include buttonStyle(6px, 8px, #ffe015, #fff, 16px, 100%, #332d04);
 	text-align: center;
 	text-decoration: none;
 	@include buttons(#80700a, #999, #D3D3D3);
 }
 
-/* PLAYERS CSS
- -----------------------*/
-
 .player {
 	@include column();
-	font-size: 1.2em;
-	letter-spacing: 2px;
-	width: 200px;
 }
 
 .playerName {
-	font-size: 2rem;
 	text-align: center;
 	font-family: 'Vollkorn', serif!important;
 }
 
-/* COUNTER CSS
-------------------------*/
 .counter {
 	@include auto();
 	position: relative;
 }
+
 .counterScore {
 	color: #FAFAFA;
 	text-align: center;
@@ -57,5 +50,25 @@
 		position: absolute;
 		width: 100px;
 		color: #332d04;
+	}
+}
+
+@media (min-width: 512px) {
+	.form {
+		input[type=text] {
+			width: 175px;
+		}
+	}
+	.counterAction {
+		@include buttonStyle(15px, 20px, #ffe015, #fff, 24px, 100%, #332d04);
+	}
+	.player {
+		@include column();
+		font-size: 1.2em;
+		letter-spacing: 2px;
+		width: 200px;
+	}
+	.playerName {
+		font-size: 2rem;
 	}
 }

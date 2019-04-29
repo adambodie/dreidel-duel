@@ -5,16 +5,6 @@ import ReactTooltip from 'react-tooltip';
 import FontAwesome from 'react-fontawesome';
 import styles from "../css/header.module.scss";
 
-const customStyles = {
-	content : {
-		top                   : '50%',
-		left                  : '50%',
-		right                 : 'auto',
-		bottom                : 'auto',
-		transform             : 'translate(-50%, -50%)'
-	}
-};
-
 Modal.setAppElement('#___gatsby')
 
 export default class Instructions extends Component {
@@ -48,7 +38,6 @@ export default class Instructions extends Component {
 				<Modal
 					isOpen={this.state.modalIsOpen}
 					onRequestClose={this.closeModal}
-					style={customStyles}
 					contentLabel="Instructions"
 				>
 				<div className={styles.modal}>
